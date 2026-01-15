@@ -8,7 +8,7 @@ npm uninstall -g @angular/cli
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 
 // 建立angular專案 命令提示字元
-npx @angular/cli@latest new seal_carving
+npx @angular/cli@latest new chinese_artwork
 
 // 安裝專案依賴套件
 npm install
