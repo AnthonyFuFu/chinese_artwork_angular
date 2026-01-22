@@ -2,15 +2,44 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.0.
 
-## Development server
-
-To start a local development server, run:
-
-```bash
-ng serve
+## 安裝angular-cli套件
+```
+npm install -g @angular/cli
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 解除安裝
+```
+npm uninstall -g @angular/cli
+```
+
+## Powershell 執行策略
+```
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+```
+
+## 建立angular專案 命令提示字元
+```
+npx @angular/cli@latest new chinese_artwork
+```
+
+## 啟動專案前安裝套件
+```
+npm install
+```
+
+## 啟動專案
+
+```
+ng serve
+or
+npx ng serve --open
+```
+
+## 測試網址
+
+```
+http://localhost:4200/
+```
 
 ## Code scaffolding
 
@@ -18,6 +47,7 @@ Angular CLI includes powerful code scaffolding tools. To generate a new componen
 
 ```bash
 ng generate component component-name
+ng generate component components/component-name
 ```
 
 For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:

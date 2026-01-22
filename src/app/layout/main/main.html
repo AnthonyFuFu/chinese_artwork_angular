@@ -1,0 +1,17 @@
+<div class="min-h-screen flex flex-col">
+  <!-- Header -->
+  <header>
+    <app-header></app-header>
+  </header>
+  <!-- 主內容區域 -->
+  <div class="flex flex-1">
+    <!-- 左側邊欄 -->
+    <aside>
+      <app-left-side-bar></app-left-side-bar>
+    </aside>
+    <!-- 主內容插槽 -->
+    <main class="flex-grow">
+      <app-search></app-search>
+    </main>
+  </div>
+</div>
