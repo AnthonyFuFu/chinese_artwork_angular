@@ -1,0 +1,13 @@
+.search-container {
+  margin-bottom: 20px;
+}
+
+.artwork-list {
+  margin-top: 20px;
+}
+
+.artwork-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+}
