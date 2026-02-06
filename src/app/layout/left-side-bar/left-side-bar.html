@@ -1,1 +1,59 @@
-<p>left-side-bar works!</p>
+<!-- left-side-bar.html -->
+<div class="sidebar-container" [class.collapsed]="isCollapsed">
+    <!-- 收縮/展開按鈕 -->
+    <div class="sidebar-top">
+        <button class="toggle-button" (click)="toggleSidebar()" [class.collapsed]="isCollapsed">
+            <i class="material-icons">{{ isCollapsed ? 'chevron_right' : 'chevron_left' }}</i>
+            @if (!isCollapsed) {
+                <span></span>
+            }
+        </button>
+    </div>
+    <!-- 導航菜單 -->
+    <nav class="sidebar-nav">
+        <ul>
+            @for (item of menuItems; track $index) {
+            <li [routerLink]="item.submenu ? null : item.link" routerLinkActive="active" [title]="isCollapsed ? item.label : ''" (click)="item.submenu ? $event.preventDefault() : null">
+                <!-- 圖標 -->
+                <div class="icon">
+                    <i class="material-icons">{{ item.icon }}</i>
+                </div>
+
+                <!-- 標籤和描述（僅在展開狀態顯示） -->
+                @if (!isCollapsed) {
+                <div class="item-content">
+                    <span class="label">{{ item.label }}</span> @if (!item.submenu) {
+                    <small class="description">{{ item.description }}</small> }
+                </div>
+                }
+
+                <!-- 子菜單展開圖標 -->
+                @if (!isCollapsed && item.submenu) {
+                <div class="submenu-toggle" (click)="toggleSubmenu($index, $event)">
+                    <i class="material-icons">
+                        {{ expandedSubmenus[$index] ? 'expand_less' : 'expand_more' }}
+                    </i>
+                </div>
+                }
+            </li>
+
+            <!-- 子菜單項目 - 根據收合狀態顯示 -->
+            @if (!isCollapsed && item.submenu && expandedSubmenus[$index]) { @for (subItem of item.submenu; track subItem) {
+            <li [routerLink]="subItem.link" routerLinkActive="active" class="submenu-item">
+                <div class="submenu-icon"></div>
+                <div class="item-content">
+                    <span class="label">{{ subItem.label }}</span>
+                </div>
+            </li>
+            } } }
+        </ul>
+    </nav>
+
+    <!-- 側邊欄底部 -->
+    <div class="sidebar-footer">
+        <!-- 主題切換按鈕 -->
+        <button class="theme-toggle-button" (click)="toggleTheme()" [title]="isCollapsed ? (theme === 'dark' ? '切換至亮色模式' : '切換至暗色模式') : ''">
+            <i class="material-icons">{{ theme === 'dark' ? 'light_mode' : 'dark_mode' }}</i>
+        </button>
+    </div>
+</div>

@@ -7,7 +7,8 @@ import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-main',
-  imports: [Header, Search, LeftSideBar],
+  standalone: true,
+  imports: [Header, Search, LeftSideBar, Footer, RouterOutlet],
   templateUrl: './main.html',
 })
 export class Main {

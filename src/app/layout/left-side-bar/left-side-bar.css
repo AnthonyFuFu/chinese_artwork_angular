@@ -1,0 +1,215 @@
+/* left-side-bar.css */
+
+.sidebar-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    transition: width 0.3s ease-in-out;
+    width: 240px;
+    overflow: hidden;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-container.collapsed {
+    width: 64px;
+}
+
+.sidebar-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    transition: width 0.3s ease-in-out;
+    width: 240px;
+    overflow: hidden;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-container.collapsed {
+    width: 64px;
+}
+
+
+/* 導航菜單 */
+
+.sidebar-nav {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-nav li {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-left: 3px solid transparent;
+    white-space: nowrap;
+}
+
+.sidebar-nav li:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-nav li.active {
+    background-color: rgba(52, 152, 219, 0.2);
+    border-left-color: #3498db;
+}
+
+.sidebar-nav .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+}
+
+.sidebar-nav .icon i {
+    font-size: 24px;
+}
+
+.sidebar-nav .item-content {
+    margin-left: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-nav .label {
+    font-size: 14px;
+}
+
+.sidebar-nav .description {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 2px;
+}
+
+
+/* 側邊欄底部與收縮按鈕 */
+
+.sidebar-top {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 5px;
+}
+
+.toggle-button {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ecf0f1;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+    justify-content: center;
+}
+
+.toggle-button.collapsed {
+    padding: 8px;
+    justify-content: center;
+}
+
+.toggle-button i {
+    font-size: 20px;
+}
+
+.toggle-button span {
+    margin-left: 8px;
+}
+
+.toggle-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+/* 滾動條樣式 */
+
+.sidebar-nav::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+
+/* 子菜單樣式 */
+
+.submenu-item {
+    padding-left: 40px !important;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-left: 3px solid transparent !important;
+}
+
+.submenu-item:hover {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.submenu-item.active {
+    border-left-color: #3498db !important;
+    background-color: rgba(52, 152, 219, 0.1) !important;
+}
+
+.submenu-toggle {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.submenu-icon {
+    width: 16px;
+    min-width: 16px;
+    margin-right: 8px;
+}
+
+
+/* 主題切換按鈕樣式 */
+
+.sidebar-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 16px;
+    margin-top: auto;
+    /* 將 footer 推到底部 */
+}
+
+.theme-toggle-button {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ecf0f1;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.theme-toggle-button i {
+    font-size: 20px;
+}
+
+.theme-toggle-button span {
+    margin-left: 8px;
+}
+
+.theme-toggle-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
