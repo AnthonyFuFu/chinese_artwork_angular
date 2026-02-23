@@ -1,13 +1,20 @@
 .search-container {
-  margin-bottom: 20px;
+    display: flex;
+    align-items: center;
 }
 
-.artwork-list {
-  margin-top: 20px;
+
+/* 當視窗寬度縮小時的響應式調整 */
+
+@media (max-width: 640px) {
+    .search-input {
+        width: 160px !important;
+    }
 }
 
-.artwork-item {
-  border: 1px solid #ddd;
-  padding: 10px;
-  margin-bottom: 10px;
+
+/* 添加一些動畫效果 */
+
+.search-input:focus {
+    width: 280px;
 }

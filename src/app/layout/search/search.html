@@ -1,27 +1,8 @@
-<!-- <div class="search-container">
-  <label for="category">分類：</label>
-  <select id="category" [(ngModel)]="selectedCategory">
-    <option [value]="null">全部分類</option>
-    <option *ngFor="let category of categories" [value]="category.id">
-      {{ category.name }}
-    </option>
-  </select>
-  <label for="style">風格：</label>
-  <select id="style" [(ngModel)]="selectedStyle">
-    <option [value]="null">全部風格</option>
-    <option *ngFor="let style of styles" [value]="style.id">
-      {{ style.name }}
-    </option>
-  </select>
-  <button (click)="searchArtworks()">搜尋</button>
+<div class="search-container flex items-center bg-white rounded-full border border-gray-300 py-1 px-3 w-48">
+    <input type="text" placeholder="搜尋..." class="border-none outline-none text-sm text-gray-700 bg-transparent flex-grow" [(ngModel)]="searchTerm" (keyup.enter)="onSearch()">
+    <button type="button" class="flex items-center justify-center focus:outline-none hover:text-blue-600 transition-colors" aria-label="搜尋" (click)="onSearch()">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500 hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+    </svg>
+  </button>
 </div>
-<div class="artwork-list">
-  <div *ngFor="let artwork of artworks" class="artwork-item">
-    <h3>{{ artwork.AW_TITLE }}</h3>
-    <p>{{ artwork.AW_DESCRIPTION }}</p>
-    <p>分類：{{ artwork.CAT_NAME }}</p>
-    <p>風格：{{ artwork.STYLE_NAME }}</p>
-    <p>價格：{{ artwork.AW_PRICE }}</p>
-    <p>尺寸：{{ artwork.AW_DIMENSION }}</p>
-  </div>
-</div> -->

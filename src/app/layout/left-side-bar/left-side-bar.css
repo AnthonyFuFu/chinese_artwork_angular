@@ -1,35 +1,23 @@
-/* left-side-bar.css */
+/* left-side-bar.css - 灰色調主題 */
 
 .sidebar-container {
     display: flex;
     flex-direction: column;
     height: 100%;
-    background-color: #2c3e50;
-    color: #ecf0f1;
+    background-color: #e9ecef;
+    /* 較深的灰色背景 */
+    color: #343a40;
+    /* 深灰色文字 */
     transition: width 0.3s ease-in-out;
-    width: 240px;
+    width: 200px;
     overflow: hidden;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+    border-right: 1px solid #ced4da;
+    /* 添加 1px 灰色邊框 */
 }
 
 .sidebar-container.collapsed {
-    width: 64px;
-}
-
-.sidebar-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    background-color: #2c3e50;
-    color: #ecf0f1;
-    transition: width 0.3s ease-in-out;
-    width: 240px;
-    overflow: hidden;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.sidebar-container.collapsed {
-    width: 64px;
+    width: 50px;
 }
 
 
@@ -49,46 +37,61 @@
 .sidebar-nav li {
     display: flex;
     align-items: center;
-    padding: 14px 16px;
+    padding: 10px 12px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: all 0.2s;
     border-left: 3px solid transparent;
     white-space: nowrap;
 }
 
 .sidebar-nav li:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #dee2e6;
+    /* 更深的懸停背景 */
+    color: #0069d9;
+    /* 稍深的藍色 */
 }
 
 .sidebar-nav li.active {
-    background-color: rgba(52, 152, 219, 0.2);
-    border-left-color: #3498db;
+    background-color: #d4e5f9;
+    /* 更灰藍色的激活背景 */
+    border-left-color: #0069d9;
+    /* 稍深的藍色邊框 */
+    color: #0069d9;
 }
 
 .sidebar-nav .icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 24px;
+    min-width: 20px;
+    color: #495057;
+    /* 更深的圖標顏色 */
+}
+
+.sidebar-nav li.active .icon,
+.sidebar-nav li:hover .icon {
+    color: #0069d9;
+    /* 活動或懸停時圖標為藍色 */
 }
 
 .sidebar-nav .icon i {
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .sidebar-nav .item-content {
-    margin-left: 16px;
+    margin-left: 12px;
     display: flex;
     flex-direction: column;
 }
 
 .sidebar-nav .label {
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: 500;
 }
 
 .sidebar-nav .description {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.6);
+    font-size: 11px;
+    color: #6c757d;
     margin-top: 2px;
 }
 
@@ -96,51 +99,55 @@
 /* 側邊欄底部與收縮按鈕 */
 
 .sidebar-top {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 5px;
+    border-top: 1px solid #dee2e6;
+    /* 更深的邊框顏色 */
+    padding: 4px;
 }
 
 .toggle-button {
     display: flex;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #ecf0f1;
+    background-color: #dee2e6;
+    /* 更深的按鈕背景 */
+    color: #495057;
     border: none;
     border-radius: 4px;
-    padding: 8px 16px;
+    padding: 6px 12px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: all 0.2s;
     width: 100%;
     justify-content: center;
 }
 
 .toggle-button.collapsed {
-    padding: 8px;
+    padding: 6px;
     justify-content: center;
 }
 
 .toggle-button i {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .toggle-button span {
-    margin-left: 8px;
+    margin-left: 6px;
 }
 
 .toggle-button:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: #ced4da;
+    /* 更深的懸停背景 */
+    color: #0069d9;
 }
 
 
 /* 滾動條樣式 */
 
 .sidebar-nav::-webkit-scrollbar {
-    width: 4px;
+    width: 3px;
 }
 
 .sidebar-nav::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
+    background-color: #adb5bd;
+    border-radius: 3px;
 }
 
 .sidebar-nav::-webkit-scrollbar-track {
@@ -151,65 +158,75 @@
 /* 子菜單樣式 */
 
 .submenu-item {
-    padding-left: 40px !important;
-    background-color: rgba(0, 0, 0, 0.1);
+    padding-left: 32px !important;
+    background-color: #dde2e6 !important;
+    /* 更深的子菜單背景 */
     border-left: 3px solid transparent !important;
 }
 
 .submenu-item:hover {
-    background-color: rgba(255, 255, 255, 0.05) !important;
+    background-color: #ced4da !important;
+    /* 更深的懸停背景 */
 }
 
 .submenu-item.active {
-    border-left-color: #3498db !important;
-    background-color: rgba(52, 152, 219, 0.1) !important;
+    border-left-color: #0069d9 !important;
+    background-color: #d4e5f9 !important;
+    /* 更灰藍色的激活背景 */
 }
 
 .submenu-toggle {
     margin-left: auto;
     display: flex;
     align-items: center;
+    color: #495057;
+}
+
+.sidebar-nav li:hover .submenu-toggle {
+    color: #0069d9;
 }
 
 .submenu-icon {
-    width: 16px;
-    min-width: 16px;
-    margin-right: 8px;
+    width: 14px;
+    min-width: 14px;
+    margin-right: 6px;
 }
 
 
 /* 主題切換按鈕樣式 */
 
 .sidebar-footer {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 16px;
+    border-top: 1px solid #dee2e6;
+    padding: 12px;
     margin-top: auto;
-    /* 將 footer 推到底部 */
 }
 
 .theme-toggle-button {
     display: flex;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #ecf0f1;
+    background-color: #dee2e6;
+    /* 更深的按鈕背景 */
+    color: #495057;
     border: none;
     border-radius: 4px;
-    padding: 8px 16px;
+    padding: 6px 12px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: all 0.2s;
     width: 100%;
     justify-content: center;
-    margin-top: 8px;
+    margin-top: 6px;
 }
 
 .theme-toggle-button i {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .theme-toggle-button span {
-    margin-left: 8px;
+    margin-left: 6px;
 }
 
 .theme-toggle-button:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: #ced4da;
+    /* 更深的懸停背景 */
+    color: #0069d9;
 }
