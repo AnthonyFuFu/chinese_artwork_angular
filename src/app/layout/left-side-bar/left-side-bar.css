@@ -1,28 +1,27 @@
-/* left-side-bar.css - 灰色調主題 */
+/* left-side-bar.css - 使用主題變量 */
 
 .sidebar-container {
     display: flex;
     flex-direction: column;
     height: 100%;
-    background-color: #e9ecef;
-    /* 較深的灰色背景 */
-    color: #343a40;
-    /* 深灰色文字 */
-    transition: width 0.3s ease-in-out;
+    background-color: var(--sidebar-bg);
+    color: var(--text-color);
+    transition: width 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+
     width: 200px;
     overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
-    border-right: 1px solid #ced4da;
-    /* 添加 1px 灰色邊框 */
+    box-shadow: 0 0 10px var(--box-shadow);
+    border-right: 1px solid var(--border-color);
 }
-
+/* 全局過渡保持不變 */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
 .sidebar-container.collapsed {
     width: 50px;
 }
 
-
 /* 導航菜單 */
-
 .sidebar-nav {
     flex-grow: 1;
     overflow-y: auto;
@@ -45,18 +44,14 @@
 }
 
 .sidebar-nav li:hover {
-    background-color: #dee2e6;
-    /* 更深的懸停背景 */
-    color: #0069d9;
-    /* 稍深的藍色 */
+    background-color: var(--hover-bg);
+    color: var(--accent-color);
 }
 
 .sidebar-nav li.active {
-    background-color: #d4e5f9;
-    /* 更灰藍色的激活背景 */
-    border-left-color: #0069d9;
-    /* 稍深的藍色邊框 */
-    color: #0069d9;
+    background-color: var(--active-bg);
+    border-left-color: var(--accent-color);
+    color: var(--accent-color);
 }
 
 .sidebar-nav .icon {
@@ -64,14 +59,12 @@
     align-items: center;
     justify-content: center;
     min-width: 20px;
-    color: #495057;
-    /* 更深的圖標顏色 */
+    color: var(--icon-color);
 }
 
 .sidebar-nav li.active .icon,
 .sidebar-nav li:hover .icon {
-    color: #0069d9;
-    /* 活動或懸停時圖標為藍色 */
+    color: var(--accent-color);
 }
 
 .sidebar-nav .icon i {
@@ -91,25 +84,21 @@
 
 .sidebar-nav .description {
     font-size: 11px;
-    color: #6c757d;
+    color: var(--description-color);
     margin-top: 2px;
 }
 
-
 /* 側邊欄底部與收縮按鈕 */
-
 .sidebar-top {
-    border-top: 1px solid #dee2e6;
-    /* 更深的邊框顏色 */
+    border-top: 1px solid var(--border-color);
     padding: 4px;
 }
 
 .toggle-button {
     display: flex;
     align-items: center;
-    background-color: #dee2e6;
-    /* 更深的按鈕背景 */
-    color: #495057;
+    background-color: var(--button-bg);
+    color: var(--icon-color);
     border: none;
     border-radius: 4px;
     padding: 6px 12px;
@@ -133,20 +122,17 @@
 }
 
 .toggle-button:hover {
-    background-color: #ced4da;
-    /* 更深的懸停背景 */
-    color: #0069d9;
+    background-color: var(--button-hover-bg);
+    color: var(--accent-color);
 }
 
-
 /* 滾動條樣式 */
-
 .sidebar-nav::-webkit-scrollbar {
     width: 3px;
 }
 
 .sidebar-nav::-webkit-scrollbar-thumb {
-    background-color: #adb5bd;
+    background-color: var(--scrollbar-thumb);
     border-radius: 3px;
 }
 
@@ -154,36 +140,31 @@
     background-color: transparent;
 }
 
-
 /* 子菜單樣式 */
-
 .submenu-item {
     padding-left: 32px !important;
-    background-color: #dde2e6 !important;
-    /* 更深的子菜單背景 */
+    background-color: var(--submenu-bg) !important;
     border-left: 3px solid transparent !important;
 }
 
 .submenu-item:hover {
-    background-color: #ced4da !important;
-    /* 更深的懸停背景 */
+    background-color: var(--hover-bg) !important;
 }
 
 .submenu-item.active {
-    border-left-color: #0069d9 !important;
-    background-color: #d4e5f9 !important;
-    /* 更灰藍色的激活背景 */
+    border-left-color: var(--accent-color) !important;
+    background-color: var(--active-bg) !important;
 }
 
 .submenu-toggle {
     margin-left: auto;
     display: flex;
     align-items: center;
-    color: #495057;
+    color: var(--icon-color);
 }
 
 .sidebar-nav li:hover .submenu-toggle {
-    color: #0069d9;
+    color: var(--accent-color);
 }
 
 .submenu-icon {
@@ -192,11 +173,9 @@
     margin-right: 6px;
 }
 
-
 /* 主題切換按鈕樣式 */
-
 .sidebar-footer {
-    border-top: 1px solid #dee2e6;
+    border-top: 1px solid var(--border-color);
     padding: 12px;
     margin-top: auto;
 }
@@ -204,9 +183,8 @@
 .theme-toggle-button {
     display: flex;
     align-items: center;
-    background-color: #dee2e6;
-    /* 更深的按鈕背景 */
-    color: #495057;
+    background-color: var(--button-bg);
+    color: var(--icon-color);
     border: none;
     border-radius: 4px;
     padding: 6px 12px;
@@ -226,7 +204,6 @@
 }
 
 .theme-toggle-button:hover {
-    background-color: #ced4da;
-    /* 更深的懸停背景 */
-    color: #0069d9;
+    background-color: var(--button-hover-bg);
+    color: var(--accent-color);
 }

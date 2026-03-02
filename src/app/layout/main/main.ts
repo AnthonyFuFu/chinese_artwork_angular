@@ -9,6 +9,7 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [Header, LeftSideBar, Footer, RouterOutlet],
   templateUrl: './main.html',
+  styleUrl: './main.css',
 })
 export class Main {
 

@@ -73,6 +73,13 @@ export class LeftSideBar implements OnInit, OnDestroy {
         document.body.setAttribute('data-theme', this.theme);
       }
       
+      // 添加 Tailwind dark 類的初始設置
+      if (this.theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+
       this.mediaQueryList = window.matchMedia('(max-width: 768px)');
       this.checkScreenSize(this.mediaQueryList);
       
@@ -104,6 +111,12 @@ export class LeftSideBar implements OnInit, OnDestroy {
     if (this.isBrowser) {
       document.body.setAttribute('data-theme', this.theme);
       localStorage.setItem('theme', this.theme);
+    }
+    // 添加 Tailwind dark 類的切換
+    if (this.theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
     }
   }
 

@@ -1,10 +1,10 @@
-.sidebar-wrapper {
-    height: calc(100vh - [header-height]px - [footer-height]px);
-    transition: width 0.3s ease-in-out;
+.main-content {
+    overflow-y: auto;
+    background-color: var(--main-content-bg) !important;
+    display: flex;
+    flex-direction: column;
 }
 
-.main-content {
-    padding: 20px;
-    overflow-y: auto;
-    transition: margin-left 0.3s ease-in-out;
+.content-wrapper {
+    flex-grow: 1;
 }

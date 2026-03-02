@@ -1,3 +1,160 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "tailwindcss";
+
+:root {
+  /* 淺色主題變量 - 基於您的灰色調 */
+  --sidebar-bg: #e9ecef;
+  --text-color: #343a40;
+  --main-content-bg: #f8f9fa;
+  --content-area-bg: #ffffff;
+  --border-color: #ced4da;
+  --hover-bg: #dee2e6;
+  --active-bg: #d4e5f9;
+  --icon-color: #495057;
+  --accent-color: #0069d9;
+  --submenu-bg: #dde2e6;
+  --description-color: #6c757d;
+  --button-bg: #dee2e6;
+  --button-hover-bg: #ced4da;
+  --scrollbar-thumb: #adb5bd;
+  --box-shadow: rgba(0, 0, 0, 0.08);
+}
+/* 全局過渡樣式 - 放在 :root 變量後面 */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 特定元素的過渡例外（避免某些元素的不必要過渡） */
+*:before, *:after, 
+.instant-change {
+  transition: none;
+}
+
+body[data-theme="dark"] {
+  /* 深色主題變量 - 保持設計一致性的暗色版本 */
+  --sidebar-bg: #282c34;
+  --text-color: #e1e1e1;
+  --main-content-bg: #a0a5b0;
+  --content-area-bg: #282c34;
+  --border-color: #40454e;
+  --hover-bg: #3a3f4b;
+  --active-bg: #204267;
+  --icon-color: #a0a5b0;
+  --accent-color: #4b9fe0;
+  --submenu-bg: #32363f;
+  --description-color: #a0a5b0;
+  --button-bg: #3a3f4b;
+  --button-hover-bg: #474d59;
+  --scrollbar-thumb: #5a6072;
+  --box-shadow: rgba(0, 0, 0, 0.2);
+}
+
+/* 麵包屑導航過渡 */
+nav[aria-label="breadcrumb"] a,
+nav[aria-label="breadcrumb"] svg {
+  transition: color 0.3s ease, stroke 0.3s ease;
+}
+
+[data-theme="dark"] .bg-gray-200 {
+  background-color: #282c34;
+}
+
+[data-theme="dark"] .text-gray-700 {
+  color: #e1e1e1;
+}
+
+[data-theme="dark"] .border-gray-300 {
+  border-color: #40454e;
+}
+
+[data-theme="dark"] .text-gray-500,
+[data-theme="dark"] .text-xs {
+  color: #a0a5b0;
+}
+
+[data-theme="dark"] .bg-gray-300 {
+  background-color: #3a3f4b;
+}
+
+[data-theme="dark"] .hover\:bg-gray-400:hover {
+  background-color: #474d59;
+}
+
+[data-theme="dark"] .text-blue-600,
+[data-theme="dark"] .text-blue-700 {
+  color: #4b9fe0;
+}
+/* 麵包屑導航暗色主題樣式 */
+/* 普通鏈接文本 */
+[data-theme="dark"] .text-gray-600,
+[data-theme="dark"] a.text-gray-600,
+[data-theme="dark"] nav[aria-label="breadcrumb"] a.text-gray-600 {
+  color: #a0a5b0;
+}
+
+/* 鏈接懸停狀態 */
+[data-theme="dark"] .hover\:text-blue-600:hover,
+[data-theme="dark"] a.hover\:text-blue-600:hover,
+[data-theme="dark"] nav[aria-label="breadcrumb"] a.hover\:text-blue-600:hover {
+  color: #4b9fe0;
+}
+
+/* 分隔符顏色 */
+[data-theme="dark"] .text-gray-400,
+[data-theme="dark"] li.text-gray-400,
+[data-theme="dark"] nav[aria-label="breadcrumb"] li.text-gray-400 {
+  color: #6c757d;
+}
+
+/* 當前頁面強調顏色 */
+[data-theme="dark"] .text-blue-600,
+[data-theme="dark"] span.text-blue-600,
+[data-theme="dark"] nav[aria-label="breadcrumb"] span.text-blue-600 {
+  color: #4b9fe0;
+}
+
+/* SVG 圖標顏色 */
+[data-theme="dark"] nav[aria-label="breadcrumb"] svg,
+[data-theme="dark"] ol li svg {
+  stroke: currentColor;
+}
+
+/* 專門針對首頁圖標 */
+[data-theme="dark"] nav[aria-label="breadcrumb"] a svg.h-4.w-4 {
+  stroke: #a0a5b0;
+}
+
+[data-theme="dark"] nav[aria-label="breadcrumb"] a:hover svg.h-4.w-4 {
+  stroke: #4b9fe0;
+}
+
+/* 專門針對分隔符圖標 */
+[data-theme="dark"] nav[aria-label="breadcrumb"] li.text-gray-400 svg.h-3.w-3 {
+  stroke: #6c757d;
+}
+
+/* 暗色模式樣式 */
+[data-theme="dark"] .search-container,
+[data-theme="dark"] input.bg-white {
+  background-color: #32363f;
+  border-color: #40454e;
+}
+
+[data-theme="dark"] input.text-gray-700 {
+  color: #e1e1e1;
+}
+
+[data-theme="dark"] input::placeholder {
+  color: #a0a5b0;
+  opacity: 0.7;
+}
+
+[data-theme="dark"] svg.text-gray-500 {
+  color: #a0a5b0;
+}
+
+[data-theme="dark"] button:hover svg,
+[data-theme="dark"] .hover\:text-blue-600:hover {
+  color: #4b9fe0;
+}
