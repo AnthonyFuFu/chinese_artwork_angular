@@ -1,5 +1,9 @@
 <!-- left-side-bar.html -->
 <div class="sidebar-container" [class.collapsed]="isCollapsed">
+    
+    <!-- 用戶資料區域 - 添加這個部分 -->
+    <app-user [isCollapsed]="isCollapsed"></app-user>
+    
     <!-- 收縮/展開按鈕 -->
     <div class="sidebar-top">
         <button class="toggle-button" (click)="toggleSidebar()" [class.collapsed]="isCollapsed">

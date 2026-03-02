@@ -1,0 +1,144 @@
+/* 正常的用戶容器 */
+.user-container {
+  position: relative;
+  padding: 5px;
+  transition: all 0.3s ease;
+  width: auto; /* 自動適應內容寬度 */
+}
+
+/* 收合狀態的用戶容器 */
+.user-container.collapsed {
+  width: 50px; /* 收合時固定寬度為50px */
+  display: flex;
+  justify-content: center;
+}
+
+.user-avatar {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.user-avatar img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border-color);
+  background-color: var(--content-area-bg);
+}
+
+.user-avatar .user-name {
+  margin-left: 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 140px;
+}
+
+/* 用戶菜單的基本樣式 */
+.user-menu {
+  position: absolute;
+  top: calc(100%);
+  left: 0;
+  width: 200px;
+  background-color: var(--content-area-bg);
+  box-shadow: 0 4px 15px var(--box-shadow);
+  padding: 12px;
+  z-index: 100;
+  border: 1px solid var(--border-color);
+  border-radius: 0 0 8px 8px;
+}
+
+/* 收合狀態下的菜單 */
+.user-menu.collapsed-menu {
+  width: 50px;
+  top: 50;
+  padding: 8px 0;
+}
+
+.user-menu .user-info {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.user-menu .user-info .full-name {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.user-menu .user-info .email {
+  font-size: 0.8rem;
+  color: var(--description-color);
+  margin-top: 4px;
+}
+
+.user-menu .menu-options {
+  margin-top: 8px;
+}
+
+/* 收合狀態下的菜單選項容器 */
+.collapsed-menu .menu-options {
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-menu .menu-options .menu-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: background-color 0.2s;
+}
+
+/* 收合狀態下的菜單項 */
+.collapsed-menu .menu-options .menu-item {
+  justify-content: center;
+  padding: 8px 0;
+  width: 100%;
+}
+
+.user-menu .menu-options .menu-item:hover {
+  background-color: var(--hover-bg);
+}
+
+.user-menu .menu-options .menu-item i {
+  font-size: 18px;
+  margin-right: 10px;
+  color: var(--icon-color);
+}
+
+/* 收合狀態下的圖標 */
+.collapsed-menu .menu-options .menu-item i {
+  margin-right: 0;
+}
+
+.user-menu .menu-options .menu-item.logout {
+  color: #dc3545;
+}
+
+.user-menu .menu-options .menu-item.logout i {
+  color: #dc3545;
+}
+
+.user-menu .menu-options hr {
+  margin: 8px 0;
+  border: none;
+  border-top: 1px solid var(--border-color);
+}
+
+/* 收合狀態下的分隔線 */
+.collapsed-menu .menu-options hr {
+  width: 80%;
+  margin: 4px auto;
+}

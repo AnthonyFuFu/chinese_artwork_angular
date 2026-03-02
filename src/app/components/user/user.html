@@ -1,0 +1,43 @@
+<div class="user-container" [class.collapsed]="isCollapsed">
+  <div class="user-avatar" (click)="toggleUserMenu()">
+    <img [src]="member?.avatarUrl || 'https://ui-avatars.com/api/?name=Guest&background=0D8ABC&color=fff'" alt="User Avatar">
+    @if (!isCollapsed) {
+      <span class="user-name">{{ member?.displayName || '未登入' }}</span>
+    }
+  </div>
+  
+  <!-- 用戶菜單 - 點擊頭像後顯示，不管側邊欄狀態 -->
+  @if (isUserMenuOpen) {
+    <div class="user-menu" [class.collapsed-menu]="isCollapsed">
+      <!-- 只在展開狀態顯示用戶信息 -->
+      @if (!isCollapsed) {
+        <div class="user-info">
+          <span class="full-name">{{ member?.fullName || '訪客' }}</span>
+          <span class="email">{{ member?.email || '' }}</span>
+        </div>
+      }
+      <div class="menu-options">
+        <a class="menu-item" (click)="editProfile()">
+          <i class="material-icons">edit</i>
+          <!-- 只在展開狀態顯示文字 -->
+          @if (!isCollapsed) {
+            <span>編輯個人資料</span>
+          }
+        </a>
+        <a class="menu-item" (click)="settings()">
+          <i class="material-icons">settings</i>
+          @if (!isCollapsed) {
+            <span>帳號設定</span>
+          }
+        </a>
+        <hr>
+        <a class="menu-item logout" (click)="logout()">
+          <i class="material-icons">exit_to_app</i>
+          @if (!isCollapsed) {
+            <span>登出</span>
+          }
+        </a>
+      </div>
+    </div>
+  }
+</div>

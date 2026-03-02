@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Search } from '../search/search';
+import { Search } from './../../components/search/search';
 import { Breadcrumb } from './../../components/breadcrumb/breadcrumb';
 
 @Component({

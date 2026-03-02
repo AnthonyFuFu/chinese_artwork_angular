@@ -1,11 +1,12 @@
 import { Component, OnInit, HostBinding, OnDestroy, PLATFORM_ID, Inject } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { User } from '../../components/user/user';
 
 @Component({
 	selector: 'app-left-side-bar',
 	standalone: true,
-	imports: [CommonModule, RouterModule],
+	imports: [CommonModule, RouterModule, User],
 	templateUrl: './left-side-bar.html',
 	styleUrl: './left-side-bar.css'
 })

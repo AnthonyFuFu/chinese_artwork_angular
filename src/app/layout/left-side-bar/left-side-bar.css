@@ -176,7 +176,7 @@
 /* 主題切換按鈕樣式 */
 .sidebar-footer {
     border-top: 1px solid var(--border-color);
-    padding: 12px;
+    padding: 5px;
     margin-top: auto;
 }
 
@@ -192,7 +192,6 @@
     transition: all 0.2s;
     width: 100%;
     justify-content: center;
-    margin-top: 6px;
 }
 
 .theme-toggle-button i {
