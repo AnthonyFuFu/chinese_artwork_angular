@@ -1,0 +1,53 @@
+/* 頁腳樣式 */
+.page-footer {
+  background-color: var(--sidebar-bg); /* 使用側邊欄背景色，保持一致性 */
+  color: var(--description-color); /* 使用次要文本顏色 */
+  padding: 0.63rem 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-container {
+  max-width: 80rem; /* 相當於 container */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.copyright-text {
+  font-size: 0.75rem; /* text-xs */
+  text-align: center;
+}
+
+/* 可選：添加一些響應式調整 */
+@media (max-width: 640px) {
+  .page-footer {
+    padding: 0.5rem 0;
+  }
+  
+  .footer-container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+/* 可選：添加其他頁腳元素樣式 */
+.footer-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-link {
+  color: var(--description-color);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-link:hover {
+  color: var(--accent-color);
+}

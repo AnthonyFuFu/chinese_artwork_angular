@@ -1,4 +1,10 @@
 /* left-side-bar.css - 使用主題變量 */
+.sidebar-wrapper {
+  position: sticky;
+  top: 0;
+  height: 100vh; /* 確保側邊欄佔滿整個視窗高度 */
+  overflow: hidden; /* 控制溢出 */
+}
 
 .sidebar-container {
     display: flex;
@@ -9,7 +15,8 @@
     transition: width 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 
     width: 200px;
-    overflow: hidden;
+    overflow-y: auto; /* 添加垂直滾動 */
+    overflow-x: hidden; /* 防止水平滾動 */
     box-shadow: 0 0 10px var(--box-shadow);
     border-right: 1px solid var(--border-color);
 }

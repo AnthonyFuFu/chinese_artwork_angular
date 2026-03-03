@@ -51,12 +51,26 @@
   z-index: 100;
   border: 1px solid var(--border-color);
   border-radius: 0 0 8px 8px;
+  
+  /* 添加過渡動畫 */
+  animation: slideDown 0.2s ease-out forwards;
+  transform-origin: top center;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scaleY(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
 }
 
 /* 收合狀態下的菜單 */
 .user-menu.collapsed-menu {
   width: 50px;
-  top: 50;
   padding: 8px 0;
 }
 

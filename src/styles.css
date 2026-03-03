@@ -10,9 +10,9 @@
   --content-area-bg: #ffffff;
   --border-color: #ced4da;
   --hover-bg: #dee2e6;
-  --active-bg: #d4e5f9;
   --icon-color: #495057;
-  --accent-color: #0069d9;
+  --active-bg: #d0dbeb;
+  --accent-color: #4685ce;
   --submenu-bg: #dde2e6;
   --description-color: #6c757d;
   --button-bg: #dee2e6;
@@ -20,6 +20,26 @@
   --scrollbar-thumb: #adb5bd;
   --box-shadow: rgba(0, 0, 0, 0.08);
 }
+
+body[data-theme="dark"] {
+  /* 深色主題變量 - 保持設計一致性的暗色版本 */
+  --sidebar-bg: #282c34;
+  --text-color: #e1e1e1;
+  --main-content-bg: #a0a5b0;
+  --content-area-bg: #383c47;
+  --border-color: #525964;
+  --hover-bg: #3a3f4b;
+  --icon-color: #a0a5b0;
+  --active-bg: #2d3848;
+  --accent-color: #7ba4e2;
+  --submenu-bg: #32363f;
+  --description-color: #a0a5b0;
+  --button-bg: #3a3f4b;
+  --button-hover-bg: #474d59;
+  --scrollbar-thumb: #5a6072;
+  --box-shadow: rgba(0, 0, 0, 0.2);
+}
+
 /* 全局過渡樣式 - 放在 :root 變量後面 */
 * {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
@@ -29,25 +49,6 @@
 *:before, *:after, 
 .instant-change {
   transition: none;
-}
-
-body[data-theme="dark"] {
-  /* 深色主題變量 - 保持設計一致性的暗色版本 */
-  --sidebar-bg: #282c34;
-  --text-color: #e1e1e1;
-  --main-content-bg: #a0a5b0;
-  --content-area-bg: #282c34;
-  --border-color: #40454e;
-  --hover-bg: #3a3f4b;
-  --active-bg: #204267;
-  --icon-color: #a0a5b0;
-  --accent-color: #4b9fe0;
-  --submenu-bg: #32363f;
-  --description-color: #a0a5b0;
-  --button-bg: #3a3f4b;
-  --button-hover-bg: #474d59;
-  --scrollbar-thumb: #5a6072;
-  --box-shadow: rgba(0, 0, 0, 0.2);
 }
 
 /* 麵包屑導航過渡 */

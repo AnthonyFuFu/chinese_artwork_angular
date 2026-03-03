@@ -1,0 +1,64 @@
+/* 麵包屑導航樣式 */
+.breadcrumb-nav {
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem; /* 相當於 text-sm */
+}
+
+.breadcrumb-list {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb-list li {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb-list li:not(:first-child) {
+  margin-left: 0.5rem; /* 相當於 space-x-2 的間距 */
+}
+
+.breadcrumb-link {
+  display: flex;
+  align-items: center;
+  color: var(--description-color); /* 使用主題變量替代 text-gray-600 */
+  transition: color 0.2s;
+}
+
+.breadcrumb-link:hover {
+  color: var(--accent-color); /* 使用主題變量替代 text-blue-600 */
+}
+
+/* 修復圖標大小 - 首頁圖標 */
+.breadcrumb-icon.mat-icon {
+  width: 16px !important; 
+  height: 16px !important;
+  font-size: 16px !important;
+  line-height: 16px !important;
+  overflow: visible;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.breadcrumb-separator {
+  color: var(--border-color); /* 使用主題變量替代 text-gray-400 */
+}
+
+/* 修復圖標大小 - 分隔符圖標 */
+.breadcrumb-separator-icon.mat-icon {
+  width: 12px !important;
+  height: 12px !important;
+  font-size: 12px !important;
+  line-height: 12px !important;
+  overflow: visible;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.breadcrumb-current {
+  color: var(--accent-color); /* 使用主題變量替代 text-blue-600 */
+  font-weight: 500; /* 相當於 font-medium */
+}

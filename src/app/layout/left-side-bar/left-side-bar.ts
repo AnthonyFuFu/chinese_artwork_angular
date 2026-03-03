@@ -48,12 +48,6 @@ export class LeftSideBar implements OnInit, OnDestroy {
         { label: '文字字典', link: '/dictionary/character' },
         { label: '部首索引', link: '/dictionary/radical' }
       ]
-    },
-    { 
-      icon: 'settings', 
-      label: '設定', 
-      link: '/settings', 
-      description: '調整應用設置' 
     }
   ];
 

@@ -1,10 +1,13 @@
 .main-content {
-    overflow-y: auto;
-    background-color: var(--main-content-bg) !important;
+    flex: 1;
+    height: 100vh; /* 固定視窗高度 */
+    overflow-y: auto; /* 添加垂直滾動 */
+    overflow-x: hidden; /* 防止水平滾動 */
     display: flex;
     flex-direction: column;
 }
 
 .content-wrapper {
-    flex-grow: 1;
+    flex: 1; /* 保持伸展 */
+    overflow-y: visible; /* 改為 visible，讓內容自然流動 */
 }

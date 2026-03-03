@@ -1,74 +1,76 @@
-/* 搜索框全面修復樣式 */
 .search-container {
+  position: relative;
+  width: 12rem; /* w-48 */
+  border-radius: 9999px; /* rounded-full */
+  border: 1px solid var(--border-color);
+  background-color: var(--content-area-bg);
+  padding: 0.25rem 0.75rem;
   display: flex;
   align-items: center;
-  position: relative;
-  overflow: hidden;
-  width: 12rem; /* w-48 */
-  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .search-input {
-  flex: 1;
-  min-width: 0;
-  margin-right: 4px;
+  width: 100%;
   background: transparent;
   border: none;
   outline: none;
+  color: var(--text-color);
   font-size: 0.875rem; /* text-sm */
-  padding: 0;
-  transition: width 0.3s ease, color 0.3s ease;
+  padding-right: 1.5rem; /* 為圖標留出空間 */
+}
+
+.search-input::placeholder {
+  color: var(--description-color);
+  opacity: 0.8;
 }
 
 .search-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
   background: transparent;
   border: none;
   padding: 0;
-  margin-left: 2px;
-  transition: color 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.search-icon {
-  width: 16px;
-  height: 16px;
-  transition: color 0.3s ease, stroke 0.3s ease;
+.search-icon.mat-icon {
+  font-size: 16px !important;
+  height: 16px !important;
+  width: 16px !important;
+  color: var(--description-color);
+  transition: color 0.2s ease;
 }
 
-/* 暗色主題覆蓋 - 搜索框 */
-[data-theme="dark"] .search-container {
-  background-color: #32363f;
-  border-color: #40454e;
+/* 懸停效果 */
+.search-button:hover .search-icon {
+  color: var(--accent-color);
 }
 
-[data-theme="dark"] .search-input {
-  color: #e1e1e1;
+.search-container:focus-within {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(var(--accent-color-rgb), 0.2);
 }
 
-[data-theme="dark"] .search-input::placeholder {
-  color: #a0a5b0;
-  opacity: 0.7;
-}
-
-[data-theme="dark"] .search-icon {
-  color: #a0a5b0;
-}
-
-[data-theme="dark"] .search-button:hover .search-icon {
-  color: #4b9fe0;
-}
-
-/* 當視窗寬度縮小時的響應式調整 */
-@media (max-width: 640px) {
-    .search-input {
-        width: 160px !important;
-    }
-}
-
-/* 添加一些動畫效果 */
+/* 當聚焦時擴展搜索框 */
 .search-input:focus {
-    width: 280px;
+  width: 100%;
+}
+
+/* 響應式設計 */
+@media (min-width: 768px) {
+  .search-container:focus-within {
+    width: 20rem; /* 聚焦時擴展 */
+  }
+}
+
+@media (max-width: 640px) {
+  .search-container {
+    width: 10rem;
+  }
 }

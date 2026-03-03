@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 import { SearchService } from '../../service/search.service';
 
 @Component({
   selector: 'app-search',
   standalone: true, // 如果你使用的是 standalone 元件
-  imports: [FormsModule], // 導入 FormsModule
+  imports: [FormsModule, MatIconModule], // 導入 FormsModule
   templateUrl: './search.html',
   styleUrl: './search.css',
 })
