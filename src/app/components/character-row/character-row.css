@@ -1,0 +1,194 @@
+/* 主容器 */
+.character-display {
+  font-family: 'Noto Serif TC', 'Microsoft JhengHei', serif;
+  padding: 30px 0;
+  color: #2c3e50;
+}
+
+/* 字元行 */
+.character-row {
+  margin-bottom: 50px;
+  background: linear-gradient(to right, rgba(255,255,255,0.9), rgba(255,255,255,0.5));
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  padding: 25px 30px;
+  position: relative;
+  overflow: hidden; /* 確保內容不會溢出 */
+}
+
+/* 字元標籤 */
+.character-label {
+  font-size: 32px;
+  font-weight: 300;
+  color: #34495e;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(44, 62, 80, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.character-label::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 28px;
+  background-color: #8e44ad;
+  margin-right: 12px;
+  border-radius: 2px;
+}
+
+/* 字體項目 */
+.font-item {
+  padding: 15px 10px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.font-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 字體名稱 */
+.font-name {
+  font-size: 15px;
+  color: #7f8c8d;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+.font-name::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 30%;
+  width: 40%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #dfe6e9, transparent);
+}
+
+/* 字體樣本 */
+.font-sample {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  overflow: hidden;
+  padding: 5px;
+}
+
+.font-sample img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.font-item:hover .font-sample img {
+  transform: scale(1.05);
+}
+
+/* 深色模式支持 */
+@media (prefers-color-scheme: dark) {
+  .character-row {
+    background: linear-gradient(to right, rgba(30, 39, 46, 0.95), rgba(30, 39, 46, 0.8));
+  }
+  
+  .character-label {
+    color: #ecf0f1;
+    border-bottom-color: rgba(236, 240, 241, 0.1);
+  }
+  
+  .font-item {
+    background-color: #2c3e50;
+  }
+  
+  .font-name {
+    color: #bdc3c7;
+  }
+  
+  .font-sample {
+    background-color: #34495e;
+  }
+}
+
+/* Owl Carousel 基本樣式 - 只保留必要部分 */
+:host ::ng-deep .owl-carousel {
+  display: flex;
+  width: 100%;
+  position: relative;
+  cursor: grab; /* 顯示抓取指針以提示可拖動 */
+}
+
+:host ::ng-deep .owl-carousel:active {
+  cursor: grabbing; /* 拖動時指針變為抓取中 */
+}
+
+:host ::ng-deep .owl-carousel .owl-stage-outer {
+  overflow: hidden;
+  width: 100%;
+}
+
+:host ::ng-deep .owl-carousel .owl-stage {
+  display: flex;
+  flex-direction: row; /* 確保水平排列 */
+}
+
+:host ::ng-deep .owl-carousel .owl-item {
+  min-width: 150px; /* 設置最小寬度 */
+  margin-right: 15px; /* 項目間距 */
+}
+
+/* 隱藏所有導航元素 */
+:host ::ng-deep .owl-nav,
+:host ::ng-deep .owl-dots {
+  display: none !important;
+}
+
+/* 添加水平滾動提示 */
+:host ::ng-deep .owl-carousel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 50px;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.7));
+  pointer-events: none;
+}
+
+:host ::ng-deep .owl-carousel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50px;
+  background: linear-gradient(to left, transparent, rgba(255, 255, 255, 0.7));
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 深色模式下的滾動提示 */
+@media (prefers-color-scheme: dark) {
+  :host ::ng-deep .owl-carousel::after {
+    background: linear-gradient(to right, transparent, rgba(30, 39, 46, 0.7));
+  }
+  
+  :host ::ng-deep .owl-carousel::before {
+    background: linear-gradient(to left, transparent, rgba(30, 39, 46, 0.7));
+  }
+}
