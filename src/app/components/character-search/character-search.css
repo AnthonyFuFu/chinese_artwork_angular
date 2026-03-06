@@ -1,25 +1,22 @@
-/* 字體篩選區域美化樣式 - 簡化版 */
+/* 字體篩選區域美化樣式 - 主題變量版 */
 .character-search-container {
-  padding: 24px;
+  padding: 10px 30px;
   font-family: 'Noto Serif TC', 'Microsoft JhengHei', sans-serif;
-  background: linear-gradient(to right, rgba(255,255,255,0.95), rgba(255,255,255,0.8));
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  margin-bottom: 30px;
+  background: linear-gradient(to right, var(--content-area-bg), rgba(var(--content-area-bg-rgb, 255, 255, 255), 0.8));
+  box-shadow: 0 4px 20px var(--box-shadow);
 }
 
 .font-filter {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  padding-bottom: 10px;
 }
 
 .filter-title {
   margin-right: 20px;
   font-weight: 600;
   font-size: 16px;
-  color: #34495e;
+  color: var(--text-color);
   position: relative;
   padding-left: 15px;
   min-width: 80px;
@@ -33,7 +30,7 @@
   transform: translateY(-50%);
   width: 6px;
   height: 18px;
-  background-color: #8e44ad;
+  background-color: var(--accent-color);
   border-radius: 3px;
 }
 
@@ -48,11 +45,11 @@
   position: relative;
   padding: 8px 16px 8px 42px;
   border-radius: 20px;
-  background-color: #f8f9fa;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  background-color: var(--sidebar-bg);
+  box-shadow: 0 2px 5px var(--box-shadow);
   cursor: pointer;
   user-select: none;
-  color: #4a4a4a;
+  color: var(--text-color);
   font-size: 15px;
   transition: all 0.25s ease;
   display: flex;
@@ -73,27 +70,27 @@
   left: 15px;
   height: 18px;
   width: 18px;
-  background-color: white;
-  border: 1px solid #ddd;
+  background-color: var(--content-area-bg);
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   transition: all 0.2s ease;
 }
 
 /* 懸停時的樣式 */
 .filter-options label:hover {
-  background-color: #f1f3f5;
+  background-color: var(--hover-bg);
   transform: translateY(-1px);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 3px 8px var(--box-shadow);
 }
 
 .filter-options label:hover .checkmark {
-  border-color: #bbb;
+  border-color: var(--description-color);
 }
 
 /* 選中時的背景色變化 */
 .filter-options input:checked ~ .checkmark {
-  background-color: #8e44ad;
-  border-color: #8e44ad;
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
 }
 
 /* 選中時的勾號 */
@@ -105,7 +102,7 @@
   top: 2px;
   width: 5px;
   height: 10px;
-  border: solid white;
+  border: solid var(--content-area-bg);
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
@@ -117,18 +114,18 @@
 
 /* 選中時的標籤樣式 */
 .filter-options input:checked ~ span {
-  color: #8e44ad;
+  color: var(--accent-color);
   font-weight: 500;
 }
 
 .filter-options input:checked ~ .checkmark + span {
-  color: #8e44ad;
+  color: var(--accent-color);
   font-weight: 500;
 }
 
-/* 選中時的標籤背景 */
+/* 選中時的標籤背景 - 使用半透明的強調色 */
 .filter-options input:checked ~ label {
-  background-color: #f3e5f5;
+  background-color: rgba(var(--accent-color-rgb, 142, 68, 173), 0.1);
 }
 
 /* 響應式設計 */
@@ -144,41 +141,5 @@
   
   .filter-options {
     width: 100%;
-  }
-}
-
-/* 深色模式 */
-@media (prefers-color-scheme: dark) {
-  .character-search-container {
-    background: linear-gradient(to right, rgba(30, 39, 46, 0.95), rgba(30, 39, 46, 0.85));
-  }
-  
-  .filter-title {
-    color: #ecf0f1;
-  }
-  
-  .filter-options label {
-    background-color: #2c3e50;
-    color: #ddd;
-  }
-  
-  .filter-options .checkmark {
-    background-color: #1a2530;
-    border-color: #4a6178;
-  }
-  
-  .filter-options input:checked ~ .checkmark {
-    background-color: #9b59b6;
-    border-color: #8e44ad;
-  }
-  
-  .filter-options input:checked ~ span,
-  .filter-options input:checked ~ .checkmark + span {
-    color: #a569bd;
-  }
-  
-  .filter-options input:checked ~ label,
-  .filter-options label:hover {
-    background-color: #34495e;
   }
 }

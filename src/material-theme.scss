@@ -1,37 +1,158 @@
-
-// Include theming for Angular Material with `mat.theme()`.
-// This Sass mixin will define CSS variables that are used for styling Angular Material
-// components according to the Material 3 design spec.
-// Learn more about theming and how to use it for your application's
-// custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
 
+// 自定義調色板配置
+$custom-blue-palette: (
+  50: #e1f5fe,
+  100: #b3e5fc,
+  200: #81d4fa,
+  300: #4fc3f7,
+  400: #29b6f6,
+  500: #4685ce, // 對應你的 --accent-color
+  600: #0288d1,
+  700: #0277bd,
+  800: #01579b,
+  900: #01579b,
+  // 定義對比色
+  contrast: (
+    50: rgba(0, 0, 0, 0.87),
+    100: rgba(0, 0, 0, 0.87),
+    200: rgba(0, 0, 0, 0.87),
+    300: rgba(0, 0, 0, 0.87),
+    400: rgba(0, 0, 0, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  )
+);
+
+$custom-gray-palette: (
+  50: #f8f9fa, // 對應你的 --main-content-bg
+  100: #e9ecef, // 對應你的 --sidebar-bg
+  200: #dee2e6, // 對應你的 --hover-bg
+  300: #ced4da, // 對應你的 --border-color
+  400: #adb5bd, // 對應你的 --scrollbar-thumb
+  500: #6c757d, // 對應你的 --description-color
+  600: #495057, // 對應你的 --icon-color
+  700: #343a40, // 對應你的 --text-color
+  800: #212529,
+  900: #121212,
+  contrast: (
+    50: rgba(0, 0, 0, 0.87),
+    100: rgba(0, 0, 0, 0.87),
+    200: rgba(0, 0, 0, 0.87),
+    300: rgba(0, 0, 0, 0.87),
+    400: rgba(0, 0, 0, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  )
+);
+
+// 配置主題
 html {
-  height: 100%;
+  // 允許根據用戶系統偏好切換淺色/深色模式
+  color-scheme: light dark;
+  
+  // 套用 Material 主題
   @include mat.theme((
     color: (
-      primary: mat.$magenta-palette,
-      tertiary: mat.$violet-palette,
+      primary: $custom-blue-palette,
+      secondary: $custom-gray-palette,
+      tertiary: $custom-gray-palette,
     ),
-    typography: Roboto,
+    typography: (
+      plain-family: 'Noto Sans TC, sans-serif',
+      brand-family: 'Noto Serif TC, serif',
+      bold-weight: 700,
+      medium-weight: 500,
+      regular-weight: 400,
+    ),
     density: 0,
   ));
+
+  // 添加系統實用類
+  @include mat.system-classes();
+  
+  // 啟用強調焦點指示器
+  @include mat.strong-focus-indicators();
 }
 
-body {
-  // Default the application to a light color theme. This can be changed to
-  // `dark` to enable the dark color theme, or to `light dark` to defer to the
-  // user's system settings.
-  color-scheme: light;
+// 應用自定義變量到 :root
+:root {
+  /* 淺色主題變量 - 基於您的灰色調 */
+  --sidebar-bg: #e9ecef;
+  --text-color: #343a40;
+  --main-content-bg: #f8f9fa;
+  --content-area-bg: #ffffff;
+  --border-color: #ced4da;
+  --hover-bg: #dee2e6;
+  --icon-color: #495057;
+  --active-bg: #d0dbeb;
+  --accent-color: #4685ce;
+  --submenu-bg: #dde2e6;
+  --description-color: #6c757d;
+  --button-bg: #dee2e6;
+  --button-hover-bg: #ced4da;
+  --scrollbar-thumb: #adb5bd;
+  --box-shadow: rgba(0, 0, 0, 0.08);
+  --content-area-bg-rgb: 255, 255, 255;
+  --accent-color-rgb: 70, 133, 206;
+}
 
-  // Set a default background, font and text colors for the application using
-  // Angular Material's system-level CSS variables. Learn more about these
-  // variables at https://material.angular.dev/guide/system-variables
+// 深色主題配置
+body[data-theme="dark"] {
+  // 設置深色模式
+  color-scheme: dark;
+  
+  /* 深色主題變量 - 保持設計一致性的暗色版本 */
+  --sidebar-bg: #282c34;
+  --text-color: #e1e1e1;
+  --main-content-bg: #a0a5b0;
+  --content-area-bg: #383c47;
+  --border-color: #525964;
+  --hover-bg: #3a3f4b;
+  --icon-color: #a0a5b0;
+  --active-bg: #2d3848;
+  --accent-color: #7ba4e2;
+  --submenu-bg: #32363f;
+  --description-color: #a0a5b0;
+  --button-bg: #3a3f4b;
+  --button-hover-bg: #474d59;
+  --scrollbar-thumb: #5a6072;
+  --box-shadow: rgba(0, 0, 0, 0.2);
+  --content-area-bg-rgb: 56, 60, 71;
+  --accent-color-rgb: 123, 164, 226;
+  
+  // 自定義深色主題的焦點指示器顏色
+  @include mat.strong-focus-indicators-theme(#7ba4e2);
+}
+
+// 設置基本背景和文字顏色
+body {
   background-color: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
   font: var(--mat-sys-body-medium);
-
-  // Reset the user agent margin.
   margin: 0;
   height: 100%;
+}
+
+// 映射 Material 系統變量到自定義變量
+:root {
+  // 將 Material 系統變量映射到你的自定義變量
+  --mat-sys-primary: var(--accent-color);
+  --mat-sys-primary-container: var(--active-bg);
+}
+
+// 為深色模式自定義某些 Material 組件
+body[data-theme="dark"] {
+  @include mat.theme-overrides((
+    primary-container: var(--active-bg),
+    surface: var(--content-area-bg),
+    surface-container: var(--sidebar-bg),
+    outline: var(--border-color),
+  ));
 }

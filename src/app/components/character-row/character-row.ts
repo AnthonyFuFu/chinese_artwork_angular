@@ -54,22 +54,23 @@ carouselOptions: OwlOptions = {
   navText: ['', ''],
   responsive: {
     0: {
-      items: 1
-    },
-    450: {
       items: 2
     },
-    600: {
-      items: 3
-    },
-    900: {
+    450: {
       items: 4
     },
+    600: {
+      items: 6
+    },
+    900: {
+      items: 8
+    },
     1200: {
-      items: 5
+      items: 10
     }
   },
-  margin: 15, // 項目間隔
+  items: 4,  // 增加數量使每個項目變窄
+  margin: 10, // 減少項目間距
   autoWidth: false,
   center: false,
   autoHeight: false,

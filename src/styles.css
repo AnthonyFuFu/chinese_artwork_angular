@@ -19,6 +19,8 @@
   --button-hover-bg: #ced4da;
   --scrollbar-thumb: #adb5bd;
   --box-shadow: rgba(0, 0, 0, 0.08);
+  --content-area-bg-rgb: 255, 255, 255;
+  --accent-color-rgb: 142, 68, 173;
 }
 
 body[data-theme="dark"] {
@@ -38,6 +40,8 @@ body[data-theme="dark"] {
   --button-hover-bg: #474d59;
   --scrollbar-thumb: #5a6072;
   --box-shadow: rgba(0, 0, 0, 0.2);
+  --content-area-bg-rgb: 56, 60, 71;
+  --accent-color-rgb: 123, 164, 226;
 }
 
 /* 全局過渡樣式 - 放在 :root 變量後面 */
