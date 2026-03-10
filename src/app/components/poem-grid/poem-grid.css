@@ -1,0 +1,39 @@
+:host {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.draggable-box {
+  position: absolute;
+  width: 100px;
+  height: 75px;
+  background-color: rgba(70, 130, 180, 0.7);
+  border: 2px solid #4682b4;
+  border-radius: 5px;
+  cursor: move;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 14px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  
+  transition: width 0.2s ease, height 0.2s ease, font-size 0.2s ease, box-shadow 0.2s ease, left 0.2s ease, top 0.2s ease;
+  
+  transform-origin: center center;
+  
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  &.focused {
+    width: 200px;
+    height: 150px;
+    font-size: 18px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  }
+}

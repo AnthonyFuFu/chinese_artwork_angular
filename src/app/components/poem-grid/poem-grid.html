@@ -1,0 +1,9 @@
+<div 
+  class="draggable-box" 
+  #draggableBox
+  [class.focused]="isBoxFocused"
+  [style.left]="boxPosition.left"
+  [style.top]="boxPosition.top"
+  (mousedown)="onMouseDown($event)">
+  拖動我
+</div>
