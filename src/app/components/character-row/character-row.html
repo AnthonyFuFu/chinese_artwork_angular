@@ -1,37 +1,24 @@
 <div class="character-display">
-  <!-- 永字展示區 -->
-  <div class="character-row">
-    <div class="character-label">永</div>
-    
-    <owl-carousel-o [options]="carouselOptions">
-      @for (font of yongFonts; track font.fontName) {
-        <ng-template carouselSlide>
-          <div class="font-item" [attr.data-category]="font.category">
-            <div class="font-name">{{font.fontName}}</div>
-            <div class="font-sample">
-              <img [src]="font.imageUrl" [alt]="'永 in ' + font.fontName">
+  <!-- 動態生成字符展示區 -->
+  @for (charData of characterFonts; track charData.character) {
+    <div class="character-row">
+      <div class="character-label">{{charData.character}}</div>
+      
+      <owl-carousel-o [options]="carouselOptions">
+        @for (font of charData.fonts; track font.fontName) {
+          <ng-template carouselSlide>
+            <div class="font-item" 
+                 [class.selected]="isSelected(charData.character, font.fontName)"
+                 [attr.data-category]="font.category" 
+                 (click)="selectFont(charData.character, font.fontName)">
+              <div class="font-name">{{font.fontName}}</div>
+              <div class="font-sample">
+                <img [src]="font.imageUrl" [alt]="charData.character + ' in ' + font.fontName">
+              </div>
             </div>
-          </div>
-        </ng-template>
-      }
-    </owl-carousel-o>
-  </div>
-  
-  <!-- 字字展示區 -->
-  <div class="character-row">
-    <div class="character-label">字</div>
-    
-    <owl-carousel-o [options]="carouselOptions">
-      @for (font of ziFonts; track font.fontName) {
-        <ng-template carouselSlide>
-          <div class="font-item" [attr.data-category]="font.category">
-            <div class="font-name">{{font.fontName}}</div>
-            <div class="font-sample">
-              <img [src]="font.imageUrl" [alt]="'字 in ' + font.fontName">
-            </div>
-          </div>
-        </ng-template>
-      }
-    </owl-carousel-o>
-  </div>
+          </ng-template>
+        }
+      </owl-carousel-o>
+    </div>
+  }
 </div>

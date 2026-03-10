@@ -20,7 +20,7 @@
   font-size: 32px;
   font-weight: 300;
   color: var(--text-color);
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   padding-bottom: 15px;
   border-bottom: 1px solid var(--border-color);
   display: flex;
@@ -37,17 +37,19 @@
   border-radius: 2px;
 }
 
-/* 字體項目 */
+/* 確保 font-item 可以正確顯示相對定位的元素 */
 .font-item {
+  position: relative;
+  cursor: pointer; /* 添加指針樣式提示可點擊 */
   padding: 0 10px;
   border-radius: 5px;
-  background-color: var(--content-area-bg);
+  background-color: var(--button-bg);
   box-shadow: 0 4px 15px var(--box-shadow);
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 10px;
+  margin: 5px 10px 0;
 }
 
 .font-item:hover {
@@ -82,8 +84,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
-  background-color: var(--sidebar-bg);
   overflow: hidden;
   padding: 5px;
 }
@@ -96,7 +96,7 @@
 }
 
 .font-item:hover .font-sample img {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 /* Owl Carousel 基本樣式 - 只保留必要部分 */
@@ -155,4 +155,26 @@
   background: linear-gradient(to left, transparent, var(--content-area-bg));
   pointer-events: none;
   z-index: 1;
+}
+
+/* 選中狀態樣式 */
+.font-item.selected {
+  border: 2px solid var(--accent-color);
+  background-color: rgba(var(--accent-color-rgb, 30, 144, 255), 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(var(--accent-color-rgb, 30, 144, 255), 0.25);
+}
+
+.font-item.selected .font-name {
+  color: var(--accent-color);
+  font-weight: 500;
+}
+
+.font-item.selected .font-name::after {
+  background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+}
+
+/* 添加點擊反饋動畫 */
+.font-item:active {
+  transform: scale(0.95);
 }
