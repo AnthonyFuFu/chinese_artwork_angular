@@ -1,9 +1,50 @@
-<div 
-  class="draggable-box" 
-  #draggableBox
-  [class.focused]="isBoxFocused"
-  [style.left]="boxPosition.left"
-  [style.top]="boxPosition.top"
-  (mousedown)="onMouseDown($event)">
-  拖動我
+<div class="right-sidebar-container">
+  <div class="right-sidebar" [ngClass]="{'collapsed': isCollapsed}" id="poem-sidebar">
+    <div class="right-sidebar-content">
+      <!-- Grid controls area -->
+      <div class="controls">
+        <div class="control-row">
+          <div class="control-col">
+            <label for="columns">列數</label>
+            <div class="input-group">
+              <button class="btn-icon" (click)="decreaseValue('columns')">-</button>
+              <input type="number" id="columns" [(ngModel)]="columnsCount" min="1" max="12">
+              <button class="btn-icon" (click)="increaseValue('columns')">+</button>
+            </div>
+          </div>
+
+          <div class="control-col">
+            <label for="rows">行數</label>
+            <div class="input-group">
+              <button class="btn-icon" (click)="decreaseValue('rows')">-</button>
+              <input type="number" id="rows" [(ngModel)]="rowsCount" min="1" max="50">
+              <button class="btn-icon" (click)="increaseValue('rows')">+</button>
+            </div>
+          </div>
+
+          <div class="control-col">
+            <label for="emptyRows">空白行</label>
+            <div class="input-group">
+              <button class="btn-icon" (click)="decreaseValue('emptyRows')">-</button>
+              <input type="number" id="emptyRows" [(ngModel)]="emptyRowsCount" min="0" max="50">
+              <button class="btn-icon" (click)="increaseValue('emptyRows')">+</button>
+            </div>
+          </div>
+
+          <div class="control-col action-col">
+            <button id="generateGrid" class="btn-generate" (click)="onGenerateClick()" title="生成網格">
+              <mat-icon>grid_on</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="grid-container" id="grid" #gridContainer></div>
+    </div>
+
+    <div class="toggle-button" id="toggleButton" (click)="toggleSidebar()">
+      <span class="arrow">
+        <mat-icon>{{isCollapsed ? 'chevron_left' : 'chevron_right'}}</mat-icon>
+      </span>
+    </div>
+  </div>
 </div>

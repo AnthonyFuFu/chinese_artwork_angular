@@ -8,7 +8,7 @@ import { PoemGrid } from '../../components/poem-grid/poem-grid';
 @Component({
   selector: 'app-dictionary',
   standalone: true, // 如果使用獨立組件
-  imports: [CommonModule,ReactiveFormsModule,CharacterSearch,CharacterRow,PoemGrid],
+  imports: [CommonModule, ReactiveFormsModule, CharacterSearch, CharacterRow, PoemGrid],
   templateUrl: './dictionary.html',
   styleUrl: './dictionary.css',
 })

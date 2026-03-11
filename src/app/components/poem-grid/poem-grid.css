@@ -1,39 +1,253 @@
-:host {
-  display: block;
+.right-sidebar-container {
   position: relative;
-  width: 100%;
   height: 100%;
 }
 
-.draggable-box {
+.right-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  display: flex;
+  transition: width 0.3s ease;
+  background-color: #f5f5f5;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 300px; /* 基本寬度 */
+  max-width: 80vw; /* 限制最大寬度為視窗的 80% */
+  overflow-x: visible; /* 允許內容超出 */
+}
+
+.right-sidebar-content {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  max-height: 100vh; /* 限制最大高度 */
+  width: 100%; /* 確保內容寬度填滿 */
+}
+
+.toggle-button {
   position: absolute;
-  width: 100px;
-  height: 75px;
-  background-color: rgba(70, 130, 180, 0.7);
-  border: 2px solid #4682b4;
-  border-radius: 5px;
-  cursor: move;
-  user-select: none;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  cursor: pointer;
+  background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.05));
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #555;
+  transition: transform 0.3s ease;
+}
+
+.arrow svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.right-sidebar.collapsed {
+  width: 10px;
+}
+
+.right-sidebar.collapsed .right-sidebar-content {
+  display: none;
+}
+
+/* 修正：展開時箭頭指向右側（預設狀態），收合時箭頭指向左側 */
+.right-sidebar.collapsed .arrow svg {
+  transform: rotate(180deg);
+}
+
+
+/* 網格樣式 */
+.grid-container {
+  display: flex;
+  flex-direction: row;
+  width: auto; /* 改為自動寬度 */
+  margin: 20px 0;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-item {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: -1px 0 0 -1px;
+}
+
+.empty-container {
+  border: 1px solid #ccc;
+  width: 60px;
+  margin: -1px 0 0 -1px;
+  background-color: #f0f0f0;
+}
+
+/* 控制區域樣式 - 精簡雅致版 */
+.controls {
+  width: 100%;
+  margin: 0 0 12px 0;
+  background-color: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 12px;
+}
+
+.control-row {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  margin: -6px;
+  /* 負邊距技巧，抵消內部元素的邊距 */
+}
+
+.control-col {
+  padding: 6px;
+  flex-grow: 1;
+  min-width: 80px;
+  /* 確保在小視窗不會太擠 */
+  max-width: 120px;
+  /* 限制最大寬度 */
+}
+
+.action-col {
+  display: flex;
+  align-items: flex-end;
+  min-width: 42px;
+  max-width: 42px;
+}
+
+.control-col label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.input-group {
+  display: flex;
+  height: 32px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.input-group input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  text-align: center;
   font-size: 14px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-  
-  transition: width 0.2s ease, height 0.2s ease, font-size 0.2s ease, box-shadow 0.2s ease, left 0.2s ease, top 0.2s ease;
-  
-  transform-origin: center center;
-  
-  &:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  color: #334155;
+  padding: 0;
+}
+
+/* 去除數字輸入框的上下箭頭 */
+.input-group input::-webkit-inner-spin-button,
+.input-group input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.btn-icon {
+  width: 32px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8fafc;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #64748b;
+  transition: all 0.2s ease;
+}
+
+.btn-icon:hover {
+  background-color: #f1f5f9;
+  color: #334155;
+}
+
+.btn-icon:active {
+  background-color: #e2e8f0;
+}
+
+.btn-generate {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  border: none;
+  background-color: #3b82f6;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-generate:hover {
+  background-color: #2563eb;
+}
+
+.btn-generate:active {
+  background-color: #1d4ed8;
+}
+
+.btn-generate svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* 響應式調整 */
+@media (max-width: 480px) {
+  .control-col {
+    min-width: calc(50% - 12px);
+    max-width: none;
   }
-  
-  &.focused {
-    width: 200px;
-    height: 150px;
-    font-size: 18px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+
+  .action-col {
+    min-width: 100%;
+    max-width: none;
+    margin-top: 8px;
   }
+
+  .btn-generate {
+    width: 100%;
+  }
+}
+
+/* 調整生成按鈕中的圖標樣式 */
+.btn-generate mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+}
+
+/* 調整側邊欄切換按鈕中的圖標樣式 */
+.arrow mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  color: currentColor;
 }

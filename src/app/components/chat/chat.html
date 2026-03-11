@@ -1,1 +1,41 @@
-<p>chat works!</p>
+<section>
+  <form id="chatForm" class="chat-area">
+    @if (isChatOpen) {
+      <div #chatContainer class="chat-container"
+           [style.right]="boxPosition.right" 
+           [style.bottom]="boxPosition.bottom">
+        <div class="chat-header" (mousedown)="onChatHeaderMouseDown($event)">
+          <span>服務員 {{ empName }}</span>
+          <button type="button" class="chat-close" (click)="closeChatRoom()">&times;</button>
+        </div>
+        <div #chatMessages class="chat-messages">
+          @for (message of messages; track $index) {
+            <div class="message" [ngClass]="message.isUser ? 'chat-right' : 'chat-left'">
+              @if (!message.isUser) {
+                <div class="avatar">
+                  @if (message.firstChar) {
+                    <div class="first-char">{{ message.firstChar }}</div>
+                  }
+                  @if (message.avatar) {
+                    <img [src]="message.avatar" alt="Avatar">
+                  }
+                </div>
+              }
+              <div [ngClass]="message.isUser ? 'message-right-text' : 'message-left-text'">
+                {{ message.text }}
+              </div>
+            </div>
+          }
+        </div>
+        <div class="chat-input">
+          <input [(ngModel)]="msgContent" type="text" placeholder="Type your message...">
+          <button id="sendMessage" class="send-message" (click)="sendMessage()">Send</button>
+        </div>
+      </div>
+    } @else {
+      <a class="btn-msg" (click)="openChatRoom()" href="javascript:void(0);">
+        <i class="material-icons">sms</i>
+      </a>
+    }
+  </form>
+</section>
