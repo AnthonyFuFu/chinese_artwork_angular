@@ -18,6 +18,27 @@
   overflow-x: visible; /* 允許內容超出 */
 }
 
+/* 拖拽條樣式 */
+.resize-handle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  cursor: ew-resize;
+  background-color: transparent;
+  z-index: 1001;
+}
+
+.resize-handle:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* 當sidebar收起時隱藏拖拽條 */
+.right-sidebar.collapsed .resize-handle {
+  display: none;
+}
+
 .right-sidebar-content {
   flex: 1;
   padding: 15px;

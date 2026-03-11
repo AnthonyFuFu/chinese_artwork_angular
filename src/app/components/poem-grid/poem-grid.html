@@ -1,5 +1,7 @@
 <div class="right-sidebar-container">
-  <div class="right-sidebar" [ngClass]="{'collapsed': isCollapsed}" id="poem-sidebar">
+  <div class="right-sidebar" [ngClass]="{'collapsed': isCollapsed}" id="poem-sidebar" #poemSidebar>
+    <!-- 新增拖拽條 -->
+    <div class="resize-handle" id="resize-handle" #resizeHandle></div>
     <div class="right-sidebar-content">
       <!-- Grid controls area -->
       <div class="controls">
