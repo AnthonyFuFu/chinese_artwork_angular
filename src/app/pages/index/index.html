@@ -1,1 +1,36 @@
-<p>index works!</p>
+<div class="container">
+  <h2>會員列表</h2>
+  
+  @if (loading) {
+    <div class="loading">載入中...</div>
+  }
+  
+  @if (error) {
+    <div class="error">{{ error }}</div>
+  }
+  
+  @if (!loading && !error && members.length > 0) {
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>姓名</th>
+          <th>帳號</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (member of members; track member.MEM_ID) {
+          <tr>
+            <td>{{ member.MEM_ID }}</td>
+            <td>{{ member.MEM_NAME }}</td>
+            <td>{{ member.MEM_ACCOUNT }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+  
+  @if (!loading && !error && members.length === 0) {
+    <div>沒有會員資料</div>
+  }
+</div>
