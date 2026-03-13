@@ -1,34 +1,37 @@
 <nav aria-label="breadcrumb" class="breadcrumb-nav">
   <ol class="breadcrumb-list">
-    <!-- 首頁 -->
     <li>
       <a [routerLink]="['/']" class="breadcrumb-link">
         <mat-icon class="breadcrumb-icon">home</mat-icon>
       </a>
     </li>
-
-    <!-- 分隔符 -->
-    <li class="breadcrumb-separator">
-      <mat-icon class="breadcrumb-separator-icon">chevron_right</mat-icon>
-    </li>
-
-    <!-- 藝術作品 -->
-    <li>
-      <a [routerLink]="['/artwork']" class="breadcrumb-link">
-        藝術作品
-      </a>
-    </li>
-
-    <!-- 分隔符 -->
-    <li class="breadcrumb-separator">
-      <mat-icon class="breadcrumb-separator-icon">chevron_right</mat-icon>
-    </li>
-
-    <!-- 作品詳情 (當前頁面) -->
-    <li>
-      <span class="breadcrumb-current">
-        山水畫
-      </span>
-    </li>
+    <!-- 只有在有其他麵包屑項目時才顯示分隔符和其他項目 -->
+    @if (breadcrumbs.length > 0) {
+      <!-- 首頁與第一個麵包屑項目之間的分隔符 -->
+      <li class="breadcrumb-separator">
+        <mat-icon class="breadcrumb-separator-icon">chevron_right</mat-icon>
+      </li>
+      <!-- 動態生成的麵包屑項目 -->
+      @for (item of breadcrumbs; track item; let last = $last; let i = $index) {
+        <!-- 項目 -->
+        <li>
+          @if (!last) {
+            <a [routerLink]="[item.link]" class="breadcrumb-link">
+              {{item.label}}
+            </a>
+          } @else {
+            <span class="breadcrumb-current">
+              {{item.label}}
+            </span>
+          }
+        </li>
+        <!-- 分隔符 (除了最後一個項目) -->
+        @if (!last) {
+          <li class="breadcrumb-separator">
+            <mat-icon class="breadcrumb-separator-icon">chevron_right</mat-icon>
+          </li>
+        }
+      }
+    }
   </ol>
 </nav>

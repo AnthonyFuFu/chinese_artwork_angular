@@ -213,3 +213,11 @@
     background-color: var(--button-hover-bg);
     color: var(--accent-color);
 }
+
+.sidebar-container .mat-icon {
+  width: 1.11rem !important;
+  height: 1.11rem !important;
+  font-size: 1.11rem !important;
+  align-items: center;
+  justify-content: center;
+}

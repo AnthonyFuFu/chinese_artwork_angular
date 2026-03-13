@@ -1,12 +1,14 @@
-import { Component, OnInit, HostBinding, OnDestroy, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, PLATFORM_ID, Inject } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { User } from '../../components/user/user';
+import { MenuService } from '../../services/menu.service'; // 導入服務
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
 	selector: 'app-left-side-bar',
 	standalone: true,
-	imports: [CommonModule, RouterModule, User],
+	imports: [CommonModule, RouterModule, User, MatIconModule],
 	templateUrl: './left-side-bar.html',
 	styleUrl: './left-side-bar.css'
 })
@@ -19,39 +21,12 @@ export class LeftSideBar implements OnInit, OnDestroy {
   // 添加子菜單狀態管理
   expandedSubmenus: { [key: number]: boolean } = {};
 
-  // 側邊欄菜單項目
-  menuItems = [
-    { 
-      icon: 'home', 
-      label: '首頁', 
-      link: '/index', 
-      description: '返回首頁' 
-    },
-    { 
-      icon: 'person', 
-      label: '藝術家', 
-      link: '/artist', 
-      description: '藝術家資料' 
-    },
-    { 
-      icon: 'palette', 
-      label: '作品', 
-      link: '/artwork', 
-      description: '瀏覽作品' 
-    },
-    { 
-      icon: 'book', 
-      label: '辭典', 
-      link: '/dictionary', 
-      description: '查閱辭典',
-      submenu: [
-        { label: '文字字典', link: '/dictionary/character' },
-        { label: '部首索引', link: '/dictionary/radical' }
-      ]
-    }
-  ];
+  // 從服務中獲取菜單項目
+  get menuItems() {
+    return this.menuService.menuItems;
+  }
 
-  constructor(@Inject(PLATFORM_ID) platformId: Object) {
+  constructor(@Inject(PLATFORM_ID) platformId: Object, private menuService: MenuService) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
