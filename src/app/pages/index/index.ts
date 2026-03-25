@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MemberService } from '../../services/member.service';
 import { Member } from '../../models/member';
+import { News } from '../../components/news/news';
 
 @Component({
   selector: 'app-index',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,News],
   templateUrl: './index.html',
   styleUrl: './index.css',
 })

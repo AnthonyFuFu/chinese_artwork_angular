@@ -1,19 +1,26 @@
 import { Routes } from '@angular/router';
 import { ROUTE_URL } from './common/routes-url';
 import { Main } from './layout/main/main';
+import { Show } from './layout/show/show';
 
 export const routes: Routes = [
+    {
+        path: '',
+        component: Show,
+        children: [
+            {
+                path: '', redirectTo: ROUTE_URL.INDEX, pathMatch: 'full'
+            },
+            {
+                path: ROUTE_URL.INDEX,
+                loadComponent: () => import('./pages/index/index').then(c => c.Index)
+            }
+        ]
+    },
 	{
 	    path: '',
 	    component: Main,
 	    children: [
-	        {
-		        path: '', redirectTo: ROUTE_URL.INDEX, pathMatch: 'full' // 默認跳轉到 /index
-	        },
-			{
-		        path: ROUTE_URL.INDEX,
-		        loadComponent: () => import('./pages/index/index').then(c => c.Index)
-	        },
 	        {
 		        path: ROUTE_URL.ARTIST,
 		        loadChildren: () => import('./pages/artist/artist.routes').then(m => m.ARTIST_ROUTES), // 懶加載 Artist 模塊
