@@ -1,0 +1,19 @@
+
+.page-container {
+    flex: 1;
+    height: 100vh; /* 固定視窗高度 */
+    overflow-y: auto; /* 添加垂直滾動 */
+    overflow-x: hidden; /* 防止水平滾動 */
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+  flex: 1 0 auto; /* 這很重要，讓主內容自動擴展 */
+  padding-top: 64px; /* 加上 header 的高度，避免內容被覆蓋 */
+}
+
+.content-wrapper {
+    flex: 1; /* 保持伸展 */
+    overflow-y: visible; /* 改為 visible，讓內容自然流動 */
+}
