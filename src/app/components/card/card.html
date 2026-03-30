@@ -1,0 +1,35 @@
+<div class="cards">
+  @for (item of cardItems.slice(0, 4); track item.id) {
+    <div class="card" [ngClass]="item.type">
+      <div class="card-inner">
+        <div class="card-type">{{ getTypeLabel(item.type) }}</div>
+
+        <div class="card-content">
+          @if (item.imageUrl) {
+            <div class="card-image">
+              <img [src]="item.imageUrl" [alt]="item.title" (error)="handleImageError($event)" />
+            </div>
+          }
+          <div class="card-details">
+            <h3 class="card-title">{{ item.title }}</h3>
+            <div class="card-meta">
+              <span class="date">{{ formatDate(item.date) }}</span>
+            </div>
+            <p class="card-text">{{ item.content }}</p>
+            @if (item.link) {
+              <a [routerLink]="item.link" class="card-link">
+                {{ item.linkText || '查看詳情' }}
+                <mat-icon>arrow_forward</mat-icon>
+              </a>
+            }
+          </div>
+        </div>
+
+        <div class="card-decoration">
+          <div class="ink-dot"></div>
+          <div class="ink-line"></div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

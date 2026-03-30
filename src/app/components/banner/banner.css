@@ -1,0 +1,330 @@
+.banner-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* 輪播容器樣式 - 保留過渡效果 */
+.banner-carousel-container {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+  width: 100%;
+  position: relative;
+}
+
+.banner-carousel-container.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 輪播幻燈片樣式 */
+.banner-slide {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* 調整移動裝置上的高度 */
+@media (max-width: 768px) {
+  .banner-slide {
+    height: 450px;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-slide {
+    height: 350px;
+  }
+}
+
+/* 暗色覆蓋層，增強文字可讀性 */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.1) 100%);
+  z-index: 1;
+}
+
+.container {
+  position: relative;
+  width: 90%;
+  max-width: 1400px;
+  height: 100%;
+  margin: 0 auto;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+}
+
+/* 內容包裝器和對齊 */
+.content-wrapper {
+  width: 100%;
+  display: flex;
+}
+
+.content-wrapper.left {
+  justify-content: flex-start;
+}
+
+.content-wrapper.center {
+  justify-content: center;
+  text-align: center;
+}
+
+.content-wrapper.right {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+/* 輪播內容樣式 */
+.slide-content {
+  max-width: 600px;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.slide-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.slide-subtitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0 0 0.5rem;
+  color: #fff;
+  opacity: 0.9;
+}
+
+.slide-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 1.5rem 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* 按鈕樣式 */
+.slide-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(135deg, #0071e3, #0a84ff);
+  color: #fff;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+  margin-top: 1rem;
+}
+
+.slide-button mat-icon {
+  margin-left: 8px;
+  font-size: 20px;
+  transition: transform 0.2s ease;
+}
+
+.slide-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 113, 227, 0.4);
+}
+
+.slide-button:hover mat-icon {
+  transform: translateX(3px);
+}
+
+/* 自定義 Owl Carousel 控制元素 */
+::ng-deep .banner-carousel-container .owl-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+}
+
+::ng-deep .banner-carousel-container .owl-dots .owl-dot span {
+  width: 12px;
+  height: 12px;
+  margin: 0 6px;
+  background: rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+  border-radius: 50%;
+}
+
+::ng-deep .banner-carousel-container .owl-dots .owl-dot:hover span,
+::ng-deep .banner-carousel-container .owl-dots .owl-dot.active span {
+  background: #ffffff;
+}
+
+::ng-deep .banner-carousel-container .owl-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+::ng-deep .banner-carousel-container .owl-nav button {
+  pointer-events: auto;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 50% !important;
+  margin: 0 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.3s ease !important;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+::ng-deep .banner-carousel-container .owl-nav button:hover {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  transform: scale(1.1);
+}
+
+::ng-deep .banner-carousel-container .owl-nav button mat-icon {
+  color: white;
+  font-size: 24px;
+}
+
+/* 確保輪播項目平滑顯示 */
+::ng-deep .owl-carousel .owl-item {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+::ng-deep .owl-carousel .owl-item.active {
+  opacity: 1;
+}
+
+/* 動畫效果 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 自定義導航按鈕樣式 */
+.custom-nav-buttons {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.custom-nav-button {
+  pointer-events: auto;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+.custom-nav-button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.custom-nav-button mat-icon {
+  color: white;
+  font-size: 24px;
+}
+
+/* 深色模式支援 */
+@media (prefers-color-scheme: dark) {
+  .slide-button {
+    background: linear-gradient(135deg, #0a84ff, #0071e3);
+    box-shadow: 0 4px 12px rgba(10, 132, 255, 0.3);
+  }
+  
+  .slide-button:hover {
+    box-shadow: 0 6px 15px rgba(10, 132, 255, 0.4);
+  }
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+  .slide-title {
+    font-size: 2.5rem;
+  }
+  
+  .slide-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .slide-description {
+    font-size: 1rem;
+  }
+  
+  .custom-nav-button,
+  ::ng-deep .banner-carousel-container .owl-nav button {
+    width: 40px;
+    height: 40px;
+    margin: 0 10px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .slide-title {
+    font-size: 2rem;
+  }
+  
+  .slide-subtitle {
+    font-size: 1rem;
+  }
+  
+  .slide-content {
+    max-width: 100%;
+  }
+  
+  .content-wrapper.left,
+  .content-wrapper.right {
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .custom-nav-buttons,
+  ::ng-deep .banner-carousel-container .owl-nav {
+    display: none; /* 在小屏幕上隱藏導航按鈕 */
+  }
+}

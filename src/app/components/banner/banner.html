@@ -1,0 +1,44 @@
+<section class="banner-section">
+  <!-- 只保留輪播部分，使用可見性控制而非條件渲染 -->
+  <div class="banner-carousel-container" [class.visible]="isBrowser && isCarouselLoaded">
+    <owl-carousel-o [options]="carouselOptions">
+      @for (slide of slides; track slide.id) {
+        <ng-template carouselSlide>
+          <div class="banner-slide" [ngStyle]="{'background-image': 'url(' + slide.imageUrl + ')'}">
+            <div class="overlay"></div>
+            <div class="container">
+              <div class="content-wrapper" [class]="slide.alignment || 'left'">
+                <div class="slide-content">
+                  @if (slide.subtitle) {
+                    <h2 class="slide-subtitle">{{ slide.subtitle }}</h2>
+                  }
+                  <h1 class="slide-title">{{ slide.title }}</h1>
+                  @if (slide.description) {
+                    <p class="slide-description">{{ slide.description }}</p>
+                  }
+                  @if (slide.buttonLink && slide.buttonText) {
+                    <a [routerLink]="slide.buttonLink" class="slide-button">
+                      {{ slide.buttonText }}
+                      <mat-icon>arrow_forward</mat-icon>
+                    </a>
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      }
+    </owl-carousel-o>
+      
+    <!-- 自定義導航按鈕 -->
+    <div class="custom-nav-buttons">
+      <button class="custom-nav-button prev" (click)="prevSlide()">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+      <button class="custom-nav-button next" (click)="nextSlide()">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+  </div>
+  
+</section>

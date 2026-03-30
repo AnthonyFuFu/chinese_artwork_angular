@@ -408,8 +408,6 @@
 /* 重要：確保輪播內容正確定位和顯示 */
 ::ng-deep .owl-stage {
   display: flex; /* 使輪播項平等高度 */
-  padding-top: 10px; /* 添加頂部間距 */
-  padding-bottom: 10px; /* 添加底部間距 */
 }
 
 ::ng-deep .owl-item {

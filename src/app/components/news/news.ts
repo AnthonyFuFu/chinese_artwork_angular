@@ -75,7 +75,7 @@ export class News implements OnInit, AfterViewInit, OnDestroy {
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
-    
+
     // 確保 newsItems 有默認值
     if (!this.newsItems || this.newsItems.length === 0) {
       this.newsItems = this.getDefaultNewsItems();
@@ -87,20 +87,25 @@ export class News implements OnInit, AfterViewInit, OnDestroy {
     if (!this.isBrowser) {
       return;
     }
-    
+
     // 確保初始化靜態布局
     this.isCarouselReady = false;
   }
 
   ngAfterViewInit() {
-    // 僅在瀏覽器環境中設置輪播
     if (this.isBrowser) {
-      // 延長初始化時間，確保 DOM 完全加載
       this.initTimeout = setTimeout(() => {
         this.isCarouselReady = true;
         this.cdr.detectChanges();
-        
-        // 再次延遲啟用自動播放，確保輪播已完全初始化
+
+        // 添加 visible 類
+        setTimeout(() => {
+          const carouselContainer = document.querySelector('.carousel-container');
+          if (carouselContainer) {
+            carouselContainer.classList.add('visible');
+          }
+        }, 100);
+
         this.autoplayTimeout = setTimeout(() => {
           this.carouselOptions = {
             ...this.carouselOptions,
@@ -108,10 +113,10 @@ export class News implements OnInit, AfterViewInit, OnDestroy {
           };
           this.cdr.detectChanges();
         }, 2000);
-      }, 500); // 增加延遲時間
+      }, 500);
     }
   }
-  
+
   ngOnDestroy() {
     // 清理定時器
     if (this.initTimeout) {
@@ -121,7 +126,7 @@ export class News implements OnInit, AfterViewInit, OnDestroy {
       clearTimeout(this.autoplayTimeout);
     }
   }
-  
+
   getTypeLabel(type: string): string {
     switch (type) {
       case 'event': return '活動';
@@ -131,12 +136,12 @@ export class News implements OnInit, AfterViewInit, OnDestroy {
       default: return '公告';
     }
   }
-  
+
   formatDate(dateString: string): string {
     const date = new Date(dateString);
     return date.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' });
   }
-  
+
   // 提供預設新聞項目
   private getDefaultNewsItems(): NewsItem[] {
     return [
@@ -182,9 +187,9 @@ export class News implements OnInit, AfterViewInit, OnDestroy {
       }
     ];
   }
-  
+
   // 處理圖片載入錯誤
   handleImageError(event: any) {
-    // event.target.src = '/assets/images/news/news1.jpg';
+    event.target.src = '/assets/images/news/news1.jpg';
   }
 }
