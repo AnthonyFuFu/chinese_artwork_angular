@@ -1,30 +1,28 @@
 .show-footer {
   flex-shrink: 0; /* 防止 footer 縮小 */
   width: 100%;
-  color: #333;
+  color: var(--text-color);
   font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   margin-top: auto; /* 這是關鍵，將 footer 推到底部 */
 }
 
 .show-footer .glass-container {
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 -1px 20px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  background-color: var(--glass-bg-light);
+  box-shadow: 0 -1px 20px var(--box-shadow);
   padding: 3.5rem 0 2rem;
   position: relative;
   transition: background-color 0.3s ease;
 }
 
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .show-footer {
-    color: #f2f2f7;
-  }
-  
-  .show-footer .glass-container {
-    background-color: rgba(28, 28, 30, 0.7);
-  }
+/* 替換深色模式媒體查詢為數據屬性選擇器 */
+body[data-theme="dark"] .show-footer {
+  color: var(--text-color);
+}
+
+body[data-theme="dark"] .show-footer .glass-container {
+  background-color: var(--glass-bg-dark);
 }
 
 .container {
@@ -41,17 +39,11 @@
 
 .nav-column h4 {
   margin: 0 0 1.2rem;
-  color: #0071e3;
+  color: var(--accent-color);
   font-size: 1rem;
   font-weight: 600;
   position: relative;
   padding-bottom: 0.6rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  .nav-column h4 {
-    color: #0a84ff;
-  }
 }
 
 .nav-column h4::after {
@@ -61,14 +53,8 @@
   left: 0;
   width: 28px;
   height: 2px;
-  background-color: #0071e3;
+  background-color: var(--accent-color);
   border-radius: 1px;
-}
-
-@media (prefers-color-scheme: dark) {
-  .nav-column h4::after {
-    background-color: #0a84ff;
-  }
 }
 
 .nav-column ul {
@@ -82,7 +68,7 @@
 }
 
 .nav-column ul li a {
-  color: #333;
+  color: var(--text-color);
   text-decoration: none;
   transition: all 0.2s ease;
   font-size: 14px;
@@ -90,24 +76,13 @@
   opacity: 0.85;
 }
 
-@media (prefers-color-scheme: dark) {
-  .nav-column ul li a {
-    color: #f2f2f7;
-  }
-}
-
 .nav-column ul li a:hover {
-  color: #0071e3;
+  color: var(--accent-color);
   opacity: 1;
   transform: translateX(2px);
 }
 
-@media (prefers-color-scheme: dark) {
-  .nav-column ul li a:hover {
-    color: #0a84ff;
-  }
-}
-
+/* 響應式設計，保持原樣 */
 @media (max-width: 1024px) {
   .footer-nav {
     grid-template-columns: repeat(2, 1fr);

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Member } from '../../common/models/member';
+import { FrontMember } from '../../common/models/item';
 
 @Component({
   selector: 'app-user',
@@ -12,7 +12,7 @@ import { Member } from '../../common/models/member';
 export class User implements OnInit {
   @Input() isCollapsed: boolean = false;
   
-  member: Member | null = null;
+  member: FrontMember | null = null;
   isUserMenuOpen: boolean = false;
   
   constructor(private router: Router) {}

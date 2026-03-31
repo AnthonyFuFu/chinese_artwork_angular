@@ -28,12 +28,6 @@ export class MenuService {
   // 菜單項目定義 - 現在在服務中定義
   private _menuItems: MenuItem[] = [
     { 
-      icon: 'home', 
-      label: '首頁', 
-      link: '/index', 
-      description: '返回首頁' 
-    },
-    { 
       icon: 'person', 
       label: '藝術家', 
       link: '/artist', 

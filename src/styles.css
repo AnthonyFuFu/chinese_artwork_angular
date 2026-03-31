@@ -21,6 +21,11 @@
   --box-shadow: rgba(0, 0, 0, 0.08);
   --content-area-bg-rgb: 255, 255, 255;
   --accent-color-rgb: 142, 68, 173;
+    /* 新增霧狀效果相關變量 */
+  --glass-bg-light: rgba(255, 255, 255, 0.7);
+  --glass-bg-dark: rgba(28, 28, 30, 0.7);
+  --glass-shadow: 0 1px 20px rgba(0, 0, 0, 0.06);
+  --glass-blur: 10px;
 }
 
 body[data-theme="dark"] {
@@ -42,6 +47,10 @@ body[data-theme="dark"] {
   --box-shadow: rgba(0, 0, 0, 0.2);
   --content-area-bg-rgb: 56, 60, 71;
   --accent-color-rgb: 123, 164, 226;
+    /* 新增霧狀效果暗色模式變量 */
+  --glass-bg-light: rgba(28, 28, 30, 0.7);
+  --glass-bg-dark: rgba(20, 20, 22, 0.7);
+  --glass-shadow: 0 1px 20px rgba(0, 0, 0, 0.12);
 }
 
 /* 全局過渡樣式 - 放在 :root 變量後面 */

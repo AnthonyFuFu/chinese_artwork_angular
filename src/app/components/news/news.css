@@ -29,14 +29,15 @@
   width: 40px;
   height: 40px;
   border-radius: 12px;
-  background: linear-gradient(135deg, rgba(0, 122, 255, 0.2), rgba(0, 122, 255, 0.1));
+  background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.2), rgba(var(--accent-color-rgb), 0.1));
   margin-right: 1rem;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .icon-wrapper mat-icon {
-  color: #0071e3;
+  color: var(--accent-color);
   font-size: 20px;
   height: 20px;
   width: 20px;
@@ -46,14 +47,14 @@
   font-size: 1.6rem;
   font-weight: 600;
   margin: 0;
-  color: #333;
+  color: var(--text-color);
 }
 
 .view-all a {
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: #0071e3;
+  color: var(--accent-color);
   font-size: 0.9rem;
   font-weight: 500;
   transition: all 0.2s ease;
@@ -79,7 +80,7 @@
   margin: 0 -10px; /* 讓輪播可以延伸到容器外部 */
 }
 
-/* 輪播卡片樣式 */
+/* 輪播卡片樣式 - 毛玻璃效果 */
 .news-card {
   margin: 10px;
   height: 100%;
@@ -88,17 +89,27 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
 .card-inner {
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  background-color: var(--glass-bg-light);
   padding: 1.5rem;
   position: relative;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(209, 213, 219, 0.3);
+  box-shadow: var(--glass-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   display: flex;
   flex-direction: column;
+}
+
+body[data-theme="dark"] .card-inner {
+  background-color: var(--glass-bg-dark);
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 /* 卡片類型標籤樣式 */
@@ -106,14 +117,16 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background-color: rgba(0, 0, 0, 0.05);
-  color: #666;
+  background-color: rgba(255, 255, 255, 0.7); /* 更高不透明度的白色背景 */
+  color: var(--description-color);
   padding: 0.3rem 0.7rem;
   border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 500;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 10;
 }
 
 .news-card.event .card-type {
@@ -150,6 +163,7 @@
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 1.2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .card-image img {
@@ -173,13 +187,13 @@
   margin: 0 0 0.5rem;
   font-size: 1.2rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-color);
   line-height: 1.4;
 }
 
 .card-meta {
   margin-bottom: 0.8rem;
-  color: #666;
+  color: var(--description-color);
   font-size: 0.85rem;
 }
 
@@ -187,7 +201,7 @@
   margin: 0 0 1.2rem;
   font-size: 0.95rem;
   line-height: 1.5;
-  color: #555;
+  color: var(--description-color);
   flex: 1;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -200,7 +214,7 @@
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  color: #0071e3;
+  color: var(--accent-color);
   font-size: 0.9rem;
   font-weight: 500;
   margin-top: auto;
@@ -235,32 +249,32 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: #0071e3;
+  background-color: var(--accent-color);
 }
 
 .ink-line {
   width: 30px;
   height: 1px;
-  background-color: #0071e3;
+  background-color: var(--accent-color);
   margin-left: 3px;
 }
 
 /* 自定義 Owl Carousel 控制元素 */
 ::ng-deep .owl-theme .owl-dots .owl-dot span {
-  background: rgba(0, 113, 227, 0.2);
+  background: rgba(var(--accent-color-rgb), 0.2);
   transition: all 0.3s ease;
 }
 
 ::ng-deep .owl-theme .owl-dots .owl-dot:hover span,
 ::ng-deep .owl-theme .owl-dots .owl-dot.active span {
-  background: #0071e3;
+  background: var(--accent-color);
 }
 
 ::ng-deep .owl-theme .owl-nav [class*=owl-] {
-  color: #0071e3;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  color: var(--accent-color);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  background-color: var(--glass-bg-light);
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -269,14 +283,20 @@
   justify-content: center;
   margin: 0 10px;
   font-size: 1.5rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--glass-shadow);
   transition: all 0.3s ease;
   outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+body[data-theme="dark"] ::ng-deep .owl-theme .owl-nav [class*=owl-] {
+  background-color: var(--glass-bg-dark);
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 ::ng-deep .owl-theme .owl-nav [class*=owl-]:hover {
-  background: rgba(255, 255, 255, 0.95);
-  color: #0071e3;
+  background-color: rgba(var(--content-area-bg-rgb), 0.95);
+  color: var(--accent-color);
   transform: scale(1.05);
 }
 
@@ -298,59 +318,6 @@
 
 ::ng-deep .owl-theme .owl-nav.disabled + .owl-dots {
   margin-top: 25px;
-}
-
-/* 深色模式支援 */
-@media (prefers-color-scheme: dark) {
-  .section-header h2 {
-    color: #f2f2f7;
-  }
-  
-  .card-inner {
-    background-color: rgba(44, 44, 46, 0.8);
-    border-color: rgba(70, 70, 72, 0.3);
-  }
-  
-  .card-title {
-    color: #f2f2f7;
-  }
-  
-  .card-text {
-    color: #aaaaaa;
-  }
-  
-  .card-meta {
-    color: #999999;
-  }
-  
-  ::ng-deep .owl-theme .owl-nav [class*=owl-] {
-    background: rgba(44, 44, 46, 0.8);
-    color: #0a84ff;
-  }
-  
-  ::ng-deep .owl-theme .owl-nav [class*=owl-]:hover {
-    background: rgba(44, 44, 46, 0.95);
-  }
-  
-  .view-all a,
-  .card-link,
-  .icon-wrapper mat-icon {
-    color: #0a84ff;
-  }
-  
-  .ink-dot,
-  .ink-line {
-    background-color: #0a84ff;
-  }
-  
-  ::ng-deep .owl-theme .owl-dots .owl-dot span {
-    background: rgba(10, 132, 255, 0.2);
-  }
-  
-  ::ng-deep .owl-theme .owl-dots .owl-dot:hover span,
-  ::ng-deep .owl-theme .owl-dots .owl-dot.active span {
-    background: #0a84ff;
-  }
 }
 
 /* 響應式樣式 */

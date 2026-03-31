@@ -2,17 +2,7 @@ import { Component, Input, OnInit, AfterViewInit, ChangeDetectorRef, PLATFORM_ID
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
-
-export interface CardItem {
-  id: string;
-  title: string;
-  content: string;
-  type: 'event' | 'news' | 'exhibition' | 'update';
-  date: string;
-  imageUrl?: string;
-  link?: string;
-  linkText?: string;
-}
+import { CardItem } from '../../common/models/item';
 
 @Component({
   selector: 'app-card',

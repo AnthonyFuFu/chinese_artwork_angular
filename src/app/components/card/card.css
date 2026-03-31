@@ -15,17 +15,27 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
 .card-inner {
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  background-color: var(--glass-bg-light);
   padding: 1.5rem;
   position: relative;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(209, 213, 219, 0.3);
+  box-shadow: var(--glass-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   display: flex;
   flex-direction: column;
+}
+
+body[data-theme="dark"] .card-inner {
+  background-color: var(--glass-bg-dark);
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 /* 卡片類型標籤樣式 */
@@ -34,13 +44,15 @@
   top: 1rem;
   right: 1rem;
   background-color: rgba(0, 0, 0, 0.05);
-  color: #666;
+  color: var(--description-color);
   padding: 0.3rem 0.7rem;
   border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 500;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 10;
 }
 
 .card.event .card-type {
@@ -77,6 +89,7 @@
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 1.2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .card-image img {
@@ -100,13 +113,13 @@
   margin: 0 0 0.5rem;
   font-size: 1.2rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-color);
   line-height: 1.4;
 }
 
 .card-meta {
   margin-bottom: 0.8rem;
-  color: #666;
+  color: var(--description-color);
   font-size: 0.85rem;
 }
 
@@ -114,7 +127,7 @@
   margin: 0 0 1.2rem;
   font-size: 0.95rem;
   line-height: 1.5;
-  color: #555;
+  color: var(--description-color);
   flex: 1;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -127,7 +140,7 @@
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  color: #0071e3;
+  color: var(--accent-color);
   font-size: 0.9rem;
   font-weight: 500;
   margin-top: auto;
@@ -162,13 +175,13 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: #0071e3;
+  background-color: var(--accent-color);
 }
 
 .ink-line {
   width: 30px;
   height: 1px;
-  background-color: #0071e3;
+  background-color: var(--accent-color);
   margin-left: 3px;
 }
 
@@ -176,6 +189,10 @@
 @media (max-width: 768px) {
   .cards {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  
+  .card {
+    margin: 5px;
   }
 }
 

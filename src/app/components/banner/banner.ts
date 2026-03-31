@@ -4,17 +4,7 @@ import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-
-export interface BannerSlide {
-  id: string;
-  title: string;
-  subtitle?: string;
-  description?: string;
-  imageUrl: string;
-  buttonText?: string;
-  buttonLink?: string;
-  alignment?: 'left' | 'center' | 'right';
-}
+import { BannerSlide } from '../../common/models/item';
 
 @Component({
   selector: 'app-banner',
@@ -39,7 +29,7 @@ export class Banner implements OnInit, AfterViewInit, OnDestroy {
     touchDrag: true,
     pullDrag: true,
     dots: true,
-    navSpeed: 1000,
+    navSpeed: 200,
     navText: ['', ''],
     responsive: {
       0: {
@@ -51,9 +41,8 @@ export class Banner implements OnInit, AfterViewInit, OnDestroy {
     autoplayTimeout: 7000,
     autoplayHoverPause: false,
     items: 1,
-    smartSpeed: 1000,
-    animateIn: 'fadeIn',
-    animateOut: 'fadeOut'
+    smartSpeed: 200,
+    slideTransition: 'linear',
   };
 
   constructor(
@@ -61,15 +50,9 @@ export class Banner implements OnInit, AfterViewInit, OnDestroy {
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
-
-    // 確保 slides 有默認值
-    if (!this.slides || this.slides.length === 0) {
-      this.slides = this.getDefaultSlides();
-    }
   }
 
   ngOnInit() {
-    // 不需要特別處理
   }
 
   ngAfterViewInit() {
@@ -133,42 +116,6 @@ export class Banner implements OnInit, AfterViewInit, OnDestroy {
     if (nextButton) {
       (nextButton as HTMLElement).click();
     }
-  }
-
-  // 提供預設輪播項目
-  private getDefaultSlides(): BannerSlide[] {
-    return [
-      {
-        id: '1',
-        title: '探索藝術的奧秘',
-        subtitle: '2024 年春季特展',
-        description: '來自世界各地的藝術珍品，帶您穿越時空，體驗不同文化的藝術魅力。',
-        imageUrl: '/assets/images/banner/banner1.jpg',
-        buttonText: '立即探索',
-        buttonLink: '/exhibition/spring-2024',
-        alignment: 'left'
-      },
-      {
-        id: '2',
-        title: '藝術教育新視野',
-        subtitle: '為下一代創造更多可能',
-        description: '我們提供多樣化的藝術課程，啟發創造力，培養藝術思維。',
-        imageUrl: '/assets/images/banner/banner2.jpg',
-        buttonText: '了解更多',
-        buttonLink: '/education',
-        alignment: 'center'
-      },
-      {
-        id: '3',
-        title: '數字藝術展',
-        subtitle: '科技與藝術的完美融合',
-        description: '探索當代藝術家如何運用先進技術創造令人驚嘆的數字藝術作品。',
-        imageUrl: '/assets/images/banner/banner3.jpg',
-        buttonText: '預約參觀',
-        buttonLink: '/exhibition/digital-art',
-        alignment: 'right'
-      }
-    ];
   }
 
   // 處理圖片載入錯誤
