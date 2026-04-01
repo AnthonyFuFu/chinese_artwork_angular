@@ -43,6 +43,7 @@
   flex: 1;
   padding: 15px;
   overflow-y: auto;
+  overflow-x: auto; /* 添加水平滾動 */
   max-height: 100vh; /* 限制最大高度 */
   width: 100%; /* 確保內容寬度填滿 */
 }
@@ -89,13 +90,21 @@
   transform: rotate(180deg);
 }
 
+/* 添加一個包裝容器樣式，用於網格縮放 */
+.grid-wrapper {
+  width: 100%;
+  overflow: auto; /* 確保在內容超出時可以滾動 */
+  margin: 20px 0;
+}
 
 /* 網格樣式 */
 .grid-container {
   display: flex;
   flex-direction: row;
-  width: auto; /* 改為自動寬度 */
   margin: 20px 0;
+  overflow: visible;  /* 允許內容溢出 */
+  transform-origin: left top; /* 保持左側錨點 */
+  min-width: fit-content; /* 確保容器至少與內容一樣寬 */
 }
 
 .column {

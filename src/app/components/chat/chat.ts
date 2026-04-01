@@ -2,14 +2,7 @@ import { Component, ViewChild, ElementRef, OnInit, AfterViewInit, HostListener, 
 import { DOCUMENT } from '@angular/common';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
-interface Message {
-  text: string;
-  isUser: boolean;
-  timestamp: Date;
-  avatar?: string;
-  firstChar?: string;
-}
+import { MessageItem } from '../../common/models/item';
 
 @Component({
   selector: 'app-chat',
@@ -18,6 +11,7 @@ interface Message {
   templateUrl: './chat.html',
   styleUrl: './chat.css',
 })
+
 export class ChatRoom implements OnInit, AfterViewInit {
   @ViewChild('chatContainer') chatContainer!: ElementRef;
   @ViewChild('chatMessages') chatMessagesElement!: ElementRef;
@@ -30,7 +24,7 @@ export class ChatRoom implements OnInit, AfterViewInit {
   isChatOpen = false;
   msgContent = '';
   empName = '小助手';
-  messages: Message[] = [];
+  messages: MessageItem[] = [];
 
   // 使用固定的尺寸作為拖動邊界
   viewportWidth = 1000; // 預設值

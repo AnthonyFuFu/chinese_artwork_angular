@@ -2,23 +2,23 @@
   <!-- 只保留輪播部分，使用可見性控制而非條件渲染 -->
   <div class="banner-carousel-container" [class.visible]="isBrowser && isCarouselLoaded">
     <owl-carousel-o [options]="carouselOptions">
-      @for (slide of slides; track slide.id) {
+      @for (bannerItem of bannerItems; track bannerItem.id) {
         <ng-template carouselSlide>
-          <div class="banner-slide" [ngStyle]="{'background-image': 'url(' + slide.imageUrl + ')'}">
+          <div class="banner-slide" [ngStyle]="{'background-image': 'url(' + bannerItem.imageUrl + ')'}">
             <div class="overlay"></div>
             <div class="container">
-              <div class="content-wrapper" [class]="slide.alignment || 'left'">
+              <div class="content-wrapper" [class]="bannerItem.alignment || 'left'">
                 <div class="slide-content">
-                  @if (slide.subtitle) {
-                    <h2 class="slide-subtitle">{{ slide.subtitle }}</h2>
+                  @if (bannerItem.subtitle) {
+                    <h2 class="slide-subtitle">{{ bannerItem.subtitle }}</h2>
                   }
-                  <h1 class="slide-title">{{ slide.title }}</h1>
-                  @if (slide.description) {
-                    <p class="slide-description">{{ slide.description }}</p>
+                  <h1 class="slide-title">{{ bannerItem.title }}</h1>
+                  @if (bannerItem.description) {
+                    <p class="slide-description">{{ bannerItem.description }}</p>
                   }
-                  @if (slide.buttonLink && slide.buttonText) {
-                    <a [routerLink]="slide.buttonLink" class="slide-button">
-                      {{ slide.buttonText }}
+                  @if (bannerItem.buttonLink && bannerItem.buttonText) {
+                    <a [routerLink]="bannerItem.buttonLink" class="slide-button">
+                      {{ bannerItem.buttonText }}
                       <mat-icon>arrow_forward</mat-icon>
                     </a>
                   }

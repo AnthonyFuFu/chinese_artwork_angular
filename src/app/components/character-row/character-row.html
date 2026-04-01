@@ -10,7 +10,7 @@
             <div class="font-item" 
                  [class.selected]="isSelected(charData.character, font.fontName)"
                  [attr.data-category]="font.category" 
-                 (click)="selectFont(charData.character, font.fontName)">
+                 (click)="selectFont(charData.character, font.fontName, font.imageUrl)">
               <div class="font-name">{{font.fontName}}</div>
               <div class="font-sample">
                 <img [src]="font.imageUrl" [alt]="charData.character + ' in ' + font.fontName">

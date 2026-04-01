@@ -4,7 +4,7 @@ import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { BannerSlide } from '../../common/models/item';
+import { BannerItem } from '../../common/models/item';
 
 @Component({
   selector: 'app-banner',
@@ -14,7 +14,7 @@ import { BannerSlide } from '../../common/models/item';
   styleUrls: ['./banner.css']
 })
 export class Banner implements OnInit, AfterViewInit, OnDestroy {
-  @Input() slides: BannerSlide[] = [];
+  @Input() bannerItems: BannerItem[] = [];
 
   // 控制狀態
   isBrowser: boolean;
@@ -58,10 +58,10 @@ export class Banner implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit() {
     if (this.isBrowser) {
       // 使用預載入圖片的方式避免閃爍
-      const preloadImages = this.slides.map(slide => {
+      const preloadImages = this.bannerItems.map(bannerItem => {
         return new Promise<void>((resolve) => {
           const img = new Image();
-          img.src = slide.imageUrl;
+          img.src = bannerItem.imageUrl;
           img.onload = () => resolve();
           img.onerror = () => resolve();
         });

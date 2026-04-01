@@ -2,7 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common'; // 添加 CommonModule
-import { MenuService, BreadcrumbItem } from '../../services/menu.service'; // 導入服務
+import { MenuService } from '../../services/menu.service'; // 導入服務
+import { BreadcrumbItem } from '../../common/models/item';
 import { Subscription } from 'rxjs';
 
 @Component({

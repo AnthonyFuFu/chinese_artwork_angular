@@ -2,20 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Router, NavigationEnd, Event } from '@angular/router';
 import { filter } from 'rxjs/operators';
-
-export interface BreadcrumbItem {
-  label: string;
-  link: string;
-  icon?: string;
-}
-
-export interface MenuItem {
-  icon: string;
-  label: string;
-  link: string;
-  description?: string;
-  submenu?: {label: string, link: string}[];
-}
+import { BreadcrumbItem, MenuItem } from '../common/models/item';
 
 @Injectable({
   providedIn: 'root'
@@ -41,14 +28,26 @@ export class MenuService {
     },
     { 
       icon: 'book', 
-      label: '辭典', 
-      link: '/dictionary', 
-      description: '查閱辭典',
-      submenu: [
-        { label: '文字字典', link: '/dictionary/character' },
-        { label: '部首索引', link: '/dictionary/radical' }
-      ]
-    }
+      label: '字典', 
+      link: '/dictionary/character', 
+      description: '查閱辭典'
+    },
+    { 
+      icon: 'book', 
+      label: '部首', 
+      link: '/dictionary/radical', 
+      description: '查閱辭典'
+    },
+    // { 
+    //   icon: 'book', 
+    //   label: '辭典', 
+    //   link: '/dictionary', 
+    //   description: '查閱辭典',
+    //   submenu: [
+    //     { label: '文字字典', link: '/dictionary/character' },
+    //     { label: '部首索引', link: '/dictionary/radical' }
+    //   ]
+    // }
   ];
 
   // 提供一個 getter 方法讓組件可以獲取菜單項目

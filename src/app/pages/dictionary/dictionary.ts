@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CharacterSearch } from './../../components/character-search/character-search';
@@ -14,4 +14,10 @@ import { PoemGrid } from '../../components/poem-grid/poem-grid';
 })
 export class Dictionary {
 
+  @ViewChild('poemGrid') poemGrid!: PoemGrid;
+  
+  onFontSelected(fontInfo: {character: string, fontName: string, imageUrl: string}): void {
+    // 調用 PoemGrid 的方法將選中的字體添加到網格中
+    this.poemGrid.addFontToGrid(fontInfo.imageUrl, fontInfo.character, fontInfo.fontName);
+  }
 }

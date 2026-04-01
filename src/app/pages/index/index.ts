@@ -1,11 +1,10 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { MemberService } from '../../services/member.service';
-import { Member } from '../../models/member';
 import { News } from '../../components/news/news';
 import { Banner } from '../../components/banner/banner';
 import { Card } from '../../components/card/card';
-import { CardItem, NewsItem, BannerSlide } from '../../common/models/item';
+import { CardItem, NewsItem, BannerItem, Member } from '../../common/models/item';
 
 @Component({
   selector: 'app-index',
@@ -21,7 +20,7 @@ export class Index implements OnInit {
   loading: boolean = false;
   theme: 'dark' | 'light' = 'dark';
   
-  bannerSlide: BannerSlide[] = [
+  bannerItems: BannerItem[] = [
     {
       id: '1',
       title: '探索藝術的奧秘',
