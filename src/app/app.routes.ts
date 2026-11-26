@@ -9,7 +9,8 @@ export const routes: Routes = [
         component: Show,
         children: [
             {
-                path: '', redirectTo: ROUTE_URL.INDEX, pathMatch: 'full'
+                path: '',
+				loadComponent: () => import('./pages/index/index').then(c => c.Index)
             },
             {
                 path: ROUTE_URL.INDEX,
@@ -36,6 +37,6 @@ export const routes: Routes = [
 	    ]
 	},
 	{
-		path: '**', redirectTo: ROUTE_URL.INDEX // 若無匹配，跳轉到 /index
+		path: '**', redirectTo: ''
 	}
 ];

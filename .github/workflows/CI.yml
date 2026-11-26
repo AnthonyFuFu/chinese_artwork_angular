@@ -23,7 +23,6 @@ jobs:
           node-version: "22"
           cache: npm
 
-      # 對齊 package.json 宣告的 npm 版本
       - name: Setup npm
         run: npm install --global npm@11.6.2
 
@@ -33,15 +32,24 @@ jobs:
       - name: Build Angular site
         run: npm run build -- --output-mode=static --base-href=/chinese_artwork_angular/
 
-      # GitHub Pages 的 404.html 可協助 Angular Router 處理直接進入子路由
-      - name: Prepare site for GitHub Pages
+      - name: Prepare and check site
         run: |
           set -eux
-          find dist/chinese_artwork/browser -maxdepth 3 -type f | sort
-          test -f dist/chinese_artwork/browser/index/index.html
-          cp dist/chinese_artwork/browser/index/index.html \
-             dist/chinese_artwork/browser/404.html
-          ls -la dist/chinese_artwork/browser
+
+          SITE_DIR="dist/chinese_artwork/browser"
+
+          # 列出建置產物，方便確認 Angular 實際輸出的路徑
+          find "$SITE_DIR" -maxdepth 3 -type f | sort
+
+          # 根路徑首頁應輸出在這裡
+          test -f "$SITE_DIR/index.html"
+
+          # 提供 GitHub Pages 的路由 fallback
+          cp "$SITE_DIR/index.html" "$SITE_DIR/404.html"
+
+          # 顯示部署資料夾大小
+          du -sh "$SITE_DIR"
+          du -sb "$SITE_DIR"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
