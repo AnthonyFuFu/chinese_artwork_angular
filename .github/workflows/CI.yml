@@ -36,12 +36,11 @@ jobs:
       # GitHub Pages 的 404.html 可協助 Angular Router 處理直接進入子路由
       - name: Prepare site for GitHub Pages
         run: |
-          test -d dist/chinese_artwork/browser
-          if [ -f dist/chinese_artwork/browser/index.csr.html ]; then
-            cp dist/chinese_artwork/browser/index.csr.html dist/chinese_artwork/browser/404.html
-          elif [ -f dist/chinese_artwork/browser/index.html ]; then
-            cp dist/chinese_artwork/browser/index.html dist/chinese_artwork/browser/404.html
-          fi
+          set -eux
+          find dist/chinese_artwork/browser -maxdepth 3 -type f | sort
+          test -f dist/chinese_artwork/browser/index/index.html
+          cp dist/chinese_artwork/browser/index/index.html \
+             dist/chinese_artwork/browser/404.html
           ls -la dist/chinese_artwork/browser
 
       - name: Upload Pages artifact
