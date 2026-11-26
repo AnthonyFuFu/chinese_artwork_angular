@@ -123,6 +123,6 @@ export class News implements OnInit, AfterViewInit, OnDestroy {
 
   // 處理圖片載入錯誤
   handleImageError(event: any) {
-    event.target.src = '/assets/images/news/news1.jpg';
+    event.target.src = 'assets/images/news/news1.jpg';
   }
 }

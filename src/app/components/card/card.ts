@@ -15,7 +15,7 @@ export class Card {
   @Input() cardItems: CardItem[] = [];
   
   // 預設圖片路徑
-  private defaultImage = '/assets/images/news/news1.jpg';
+  private defaultImage = 'assets/images/news/news1.jpg';
 
   getTypeLabel(type: string): string {
     switch (type) {

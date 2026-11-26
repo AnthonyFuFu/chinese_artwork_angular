@@ -120,6 +120,6 @@ export class Banner implements OnInit, AfterViewInit, OnDestroy {
 
   // 處理圖片載入錯誤
   handleImageError(event: any) {
-    event.target.src = '/assets/images/banner/default.jpg';
+    event.target.src = 'assets/images/banner/default.jpg';
   }
 }
